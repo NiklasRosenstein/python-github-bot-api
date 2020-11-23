@@ -8,6 +8,10 @@ import setuptools
 import sys
 
 readme_file = 'README.md'
+source_readme_file = '../README.md'
+if not os.path.isfile(readme_file) and os.path.isfile(source_readme_file):
+  import shutil; shutil.copyfile(source_readme_file, readme_file)
+  import atexit; atexit.register(lambda: os.remove(readme_file))
 if os.path.isfile(readme_file):
   with io.open(readme_file, encoding='utf8') as fp:
     long_description = fp.read()
@@ -17,6 +21,8 @@ else:
 
 requirements = [
   'PyJWT >=1.7.1,<2.0.0',
+  'cryptography >=3.1.1,<4.0.0',
+  'requests >=2.25.0,<3.0.0',
 ]
 
 setuptools.setup(
