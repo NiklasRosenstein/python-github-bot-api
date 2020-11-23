@@ -35,14 +35,15 @@ def accept_event(
 
   event_name = headers.get('X-GitHub-Event')
   delivery_id = headers.get('X-GitHub-Delivery')
-  signature = headers.get('X-Hub-Signature-256')
+  signature_1 = headers.get('X-Hub-Signature')
+  signature_256 = headers.get('X-Hub-Signature-256')
   user_agent = headers.get('User-Agent')
   content_type = headers.get('Content-Type')
 
   if not event_name or not delivery_id or not user_agent or not content_type:
     raise InvalidRequest('missing required headers')
-  if webhook_secret is not None and not signature:
-    raise InvalidRequest('missing signature header')
+  if webhook_secret is not None and not (signature_1 or signature_256):
+    raise InvalidRequest('webhook secret is configured but no signature header was received')
 
   mime_type, parameters = get_mime_components(content_type)
   if mime_type != 'application/json':
@@ -50,13 +51,17 @@ def accept_event(
   encoding = dict(parameters).get('encoding', 'ascii')
 
   if webhook_secret is not None:
-    assert signature is not None
-    check_signature(signature, raw_body, webhook_secret.encode('ascii'))
+    if signature_256:
+      check_signature(signature_256, raw_body, webhook_secret.encode('ascii'), algo='sha256')
+    elif signature_1:
+      check_signature(signature_1, raw_body, webhook_secret.encode('ascii'), algo='sha1')
+    else:
+      raise RuntimeError
 
   return Event(
     event_name,
     delivery_id,
-    signature,
+    signature_256 or signature_1,
     user_agent,
     json.loads(raw_body.decode(encoding)),
   )

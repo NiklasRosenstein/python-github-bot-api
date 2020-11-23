@@ -1,0 +1,7 @@
+release_date: null
+changes:
+- type: fix
+  component: general
+  description: support verifying `X-Hub-Signature` (with `sha1`) additionally to `X-Hub-Signature-256`,
+    prefering the 256 header if available
+  fixes: []
