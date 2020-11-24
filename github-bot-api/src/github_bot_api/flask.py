@@ -5,8 +5,8 @@ Flask binding for handling GitHub webhook events.
 
 import flask
 import typing as t
-from .app import Webhook
 from .event import accept_event
+from .webhook import Webhook
 
 
 def create_event_handler(webhook: Webhook) -> t.Callable[[], t.Tuple[t.Text, int, t.Dict[str, str]]]:

@@ -10,7 +10,7 @@ import json
 import typing as t
 from dataclasses import dataclass
 from .signature import check_signature
-from .utils import get_mime_components
+from .utils.mime import get_mime_components
 
 logger = logging.getLogger(__name__)
 

@@ -41,11 +41,11 @@ setuptools.setup(
   install_requires = requirements,
   extras_require = {},
   tests_require = [],
-  python_requires = '>=3.5.0,<4.0.0',
+  python_requires = '>=3.8.0,<4.0.0',
   data_files = [],
   entry_points = {},
   cmdclass = {},
   keywords = [],
   classifiers = [],
-  zip_safe = True,
+  zip_safe = False,
 )

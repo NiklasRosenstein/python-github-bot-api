@@ -6,121 +6,75 @@ Registry for GitHub event handlers.
 import datetime
 import fnmatch
 import logging
-import requests
+import sys
+import threading
 import typing as t
 from dataclasses import dataclass, field
+import requests
+from . import __version__
 from .event import Event
-from .token import RefreshingTokenSupplier, TokenInfo
+from .token import InstallationTokenSupplier, JwtSupplier, TokenInfo
 
-logger = logging.getLogger(__name__)
 T = t.TypeVar('T')
+logger = logging.getLogger(__name__)
+user_agent = f'python/{sys.version.split()[0]} github-bot-api/{__version__}'
 
 if t.TYPE_CHECKING:
   import github
 
 
 @dataclass
-class Webhook:
-  """
-  Represents a GitHub webhook that listens on an HTTP endpoint for events. Event handlers can be
-  registered using the #@on() decorator or #register() method.
-  """
-
-  @dataclass
-  class Handler:
-    event: str  #: An event name or #fnmatch pattern.
-    func: t.Callable[[Event], bool]
-
-  #: The webhook secret, if also configured on GitHub. When specified, the payload signature
-  #: is checked before an event is accepted by the underlying HTTP framework.
-  secret: t.Optional[str]
-
-  handlers: t.List[Handler] = field(default_factory=list)
-
-  def register(self, event: str, func: t.Callable[[Event], bool]) -> None:
-    """
-    Register an event handler function. The *event* must be the name of an event or an #fnmatch
-    pattern that matches an event.
-    """
-
-    self.handlers.append(self.Handler(event, func))
-
-  def on(self, event: str) -> t.Callable[[T], T]:
-    """
-    Decorator to register an event handler function. The *event* must be the name of an event or
-    an #fnmatch pattern that matches an event name.
-    """
-
-    def wrapper(func):
-      self.register(event, func)
-      return func
-
-    return wrapper
-
-  def dispatch(self, event: Event) -> bool:
-    """
-    Dispatch an event on the first handler that matches it.
-
-    Returns #True only if the event was handled by a handler.
-    """
-
-    matched = False
-
-    for handler in self.handlers:
-      if fnmatch.fnmatch(event.name, handler.event):
-        matched = True
-        if handler.func(event):  # type: ignore
-          return True
-    else:
-      logger.info(f'Event %r (id: %r) goes {"unhandled" if matched else "unmatched"}.',
-        event.name, event.delivery_id)
-
-
-class App:
-  """
-  Represents a GitHub application that has access to the GitHub API via a JWT that is signed
-  with the application's private key.
-  """
+class GithubApp:
 
   PUBLIC_GITHUB_V3_API_URL = 'https://api.github.com'
-  PUBLIC_GITHUB_GRAPHQL_URL = 'https://api.github.com/graphql'
 
-  def __init__(
-    self,
-    app_id: str,
-    private_key: str,
-    v3_api_url: t.Optional[str] = None,
-    graphql_url: t.Optional[str] = None,
-  ) -> None:
+  #: GitHub Application ID.
+  app_id: int
 
-    self.app_id = app_id
-    self.private_key = private_key
-    self.token_supplier = RefreshingTokenSupplier(app_id, private_key)
-    self.v3_api_url = v3_api_url
-    self.graphql_url = graphql_url
+  #: RSA private key to sign the JWT with.
+  private_key: str
 
-  def refreshing_token(self, prefix: str = '') -> str:
-    from nr.proxy import proxy
-    return proxy[str](lambda: prefix + self.token_supplier().value)
+  #: GitHub API base URL. Defaults to the public GitHub API.
+  v3_api_url: str = PUBLIC_GITHUB_V3_API_URL
 
-  def _app_request(self, method, url, **args):
-    if url.startswith('/'):
-      url = (self.v3_api_url or self.PUBLIC_GITHUB_V3_API_URL) + url
-    headers = {'Authorization': str(self.refreshing_token('Bearer '))}
-    response = requests.request(method, url, headers=headers)
-    response.raise_for_status()
-    return response
+  def __post_init__(self):
+    self._jwt_supplier = JwtSupplier(self.app_id, self.private_key)
+    self._lock = threading.Lock()
+    self._installation_tokens: t.Dict[int, InstallationTokenSupplier] = {}
 
-  def get_installations(self) -> t.Dict[str, t.Any]:
-    return self._app_request('GET', '/app/installations').json()
+  @property
+  def jwt(self) -> TokenInfo:
+    return self._jwt_supplier()
 
-  def get_installation_access_token(self, installation_id: int) -> TokenInfo:
-    data = self._app_request('POST', f'/app/installations/{installation_id}/access_tokens').json()
-    issued_at = datetime.datetime.utcnow().replace(tzinfo=datetime.timezone.utc)
-    expires_at = datetime.datetime.strptime(data['expires_at'], '%Y-%m-%dT%H:%M:%S%z')
-    return TokenInfo(issued_at, expires_at, 'token', data['token'])
+  @property
+  def jwt_supplier(self) -> JwtSupplier:
+    return JwtSupplier(self.app_id, self.private_key)
 
-  def get_installation_client(self, installation_id: int) -> 'github.Github':
+  @property
+  def client(self) -> 'github.Github':
     from github import Github
-    token = self.get_installation_access_token(installation_id)
-    return Github(token.value, base_url=self.v3_api_url or self.PUBLIC_GITHUB_V3_API_URL)
+    return Github(jwt=self.jwt.value, base_url=self.v3_api_url)
+
+  def __requestor(self, auth_header: str, installation_id: int) -> t.Dict[str, str]:
+    return requests.post(
+      self.v3_api_url.rstrip('/') + f'/app/installations/{installation_id}/access_tokens',
+      headers={'Authorization': auth_header, 'User-Agent': user_agent},
+    ).json()
+
+  def get_installation_token_supplier(self, installation_id: int) -> InstallationTokenSupplier:
+    with self._lock:
+      return self._installation_tokens.setdefault(
+        installation_id,
+        InstallationTokenSupplier(
+          self._jwt_supplier,
+          installation_id,
+          self.__requestor,
+        )
+      )
+
+  def installation_token(self, installation_id: int) -> TokenInfo:
+    return self.get_installation_token_supplier(installation_id)()
+
+  def installation_client(self, installation_id: int) -> 'github.Github':
+    from github import Github
+    return Github(self.installation_token(installation_id).value, base_url=self.v3_api_url)

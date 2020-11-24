@@ -5,3 +5,45 @@ changes:
   description: support verifying `X-Hub-Signature` (with `sha1`) additionally to `X-Hub-Signature-256`,
     prefering the 256 header if available
   fixes: []
+- type: breaking_change
+  component: general
+  description: move `Webhook` class into `github_bot_api.webhook` module
+  fixes: []
+- type: breaking_change
+  component: general
+  description: rename `App` class to `GithubApp`
+  fixes: []
+- type: breaking_change
+  component: general
+  description: rename `Webhook.on()` and `Webhook.register()` to `Webhook.listen()`
+  fixes: []
+- type: breaking_change
+  component: general
+  description: update `GithubApp` methods
+  fixes: []
+- type: breaking_change
+  component: general
+  description: '`RefreshableTokenSupplier` is now an abstract base class for new `JwtSupplier`
+    and `InstallationTokenProvider`'
+  fixes: []
+- type: breaking_change
+  component: general
+  description: removed `Tokeninfo.issued_at`, replaced `TokenInfo.expired_at` with
+    `TokenInfo.exp` (which is now an int)
+  fixes: []
+- type: breaking_change
+  component: general
+  description: move `get_mime_components()` into `github_bot_api.utils.mime` module
+  fixes: []
+- type: feature
+  component: general
+  description: add `github_bot_api.utils.types` module
+  fixes: []
+- type: fix
+  component: general
+  description: mark package as typed with `py.typed` file
+  fixes: []
+- type: breaking_change
+  component: general
+  description: rename `generate_token()` to `create_jwt()`
+  fixes: []

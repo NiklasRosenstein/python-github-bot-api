@@ -4,7 +4,8 @@ author: Niklas Rosenstein <nrosenstein@palantir.com>
 description: Package description here.
 readme: ../README.md
 requirements:
-- python ^3.5
+- python ^3.8
 - PyJWT ^1.7.1
 - cryptography ^3.1.1
 - requests ^2.25.0
+typed: true
