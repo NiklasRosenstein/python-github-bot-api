@@ -28,6 +28,9 @@ class GithubApp:
 
   PUBLIC_GITHUB_V3_API_URL = 'https://api.github.com'
 
+  #: User agent of the application. This will be respected in #get_user_agent().
+  user_agent: str
+
   #: GitHub Application ID.
   app_id: int
 
@@ -42,6 +45,17 @@ class GithubApp:
     self._lock = threading.Lock()
     self._installation_tokens: t.Dict[int, InstallationTokenSupplier] = {}
 
+  def get_user_agent(self, installation_id: t.Optional[int] = None) -> str:
+    """
+    Create a user agent string for the PyGithub client, for an installation if the ID is
+    specified.
+    """
+
+    user_agent = f'{self.user_agent} PyGithub/python (app_id={self.app_id}'
+    if installation_id:
+      user_agent += f', installation_id={installation_id})'
+    return user_agent
+
   @property
   def jwt(self) -> TokenInfo:
     return self._jwt_supplier()
@@ -52,8 +66,11 @@ class GithubApp:
 
   @property
   def client(self) -> 'github.Github':
-    from github import Github
-    return Github(jwt=self.jwt.value, base_url=self.v3_api_url)
+    assert github is not None
+    return github.Github(
+      jwt=self.jwt.value,
+      base_url=self.v3_api_url,
+      user_agent=self.get_user_agent())
 
   def __requestor(self, auth_header: str, installation_id: int) -> t.Dict[str, str]:
     return requests.post(
@@ -76,5 +93,8 @@ class GithubApp:
     return self.get_installation_token_supplier(installation_id)()
 
   def installation_client(self, installation_id: int) -> 'github.Github':
-    from github import Github
-    return Github(self.installation_token(installation_id).value, base_url=self.v3_api_url)
+    assert github is not None
+    return github.Github(
+      login_or_token=self.installation_token(installation_id).value,
+      base_url=self.v3_api_url,
+      user_agent=self.get_user_agent(installation_id))

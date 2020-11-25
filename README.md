@@ -41,7 +41,11 @@ from github_bot_api import GithubApp
 with open(os.environ['PRIVATE_KEY_FILE']) as fp:
   private_key = fp.read()
 
-app = GithubApp(int(os.environ['APP_ID']), private_key)
+app = GithubApp(
+  user_agent='my-bot/0.0.0',
+  app_id=int(os.environ['APP_ID']),
+  private_key=private_key)
+
 print(app.client.get_app().owner)
 ```
 
