@@ -1,0 +1,6 @@
+release_date: null
+changes:
+- type: fix
+  component: general
+  description: Fix missing github import in `GithubApp.client` and `GithubApp.installation_client()`
+  fixes: []

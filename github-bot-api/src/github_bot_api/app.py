@@ -66,7 +66,7 @@ class GithubApp:
 
   @property
   def client(self) -> 'github.Github':
-    assert github is not None
+    import github
     return github.Github(
       jwt=self.jwt.value,
       base_url=self.v3_api_url,
@@ -93,7 +93,7 @@ class GithubApp:
     return self.get_installation_token_supplier(installation_id)()
 
   def installation_client(self, installation_id: int) -> 'github.Github':
-    assert github is not None
+    import github
     return github.Github(
       login_or_token=self.installation_token(installation_id).value,
       base_url=self.v3_api_url,
