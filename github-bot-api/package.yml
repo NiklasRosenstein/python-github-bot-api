@@ -9,3 +9,5 @@ requirements:
 - cryptography ^3.1.1
 - requests ^2.25.0
 typed: true
+changelog:
+  directory: ../.changelog
