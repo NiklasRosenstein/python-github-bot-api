@@ -27,7 +27,7 @@ requirements = [
 
 setuptools.setup(
   name = 'github-bot-api',
-  version = '0.3.0',
+  version = '0.3.1',
   author = 'Niklas Rosenstein',
   author_email = 'nrosenstein@palantir.com',
   description = 'Package description here.',
