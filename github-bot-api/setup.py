@@ -7,8 +7,6 @@ import os
 import setuptools
 import sys
 
-readme_file = 'README.md'
-
 def _tempcopy(src, dst):
   import atexit, shutil
   if not os.path.isfile(dst):
@@ -18,6 +16,10 @@ def _tempcopy(src, dst):
     shutil.copyfile(src, dst)
     atexit.register(lambda: os.remove(dst))
 
+
+_tempcopy('../LICENSE.txt', 'LICENSE.txt')
+
+readme_file = 'README.md'
 _tempcopy('../README.md', readme_file)
 if os.path.isfile(readme_file):
   with io.open(readme_file, encoding='utf8') as fp:

@@ -4,6 +4,7 @@ author: Niklas Rosenstein <nrosenstein@palantir.com>
 description: Package description here.
 readme: ../README.md
 license: MIT
+license_file: ../LICENSE.txt
 requirements:
 - python ^3.8
 - PyJWT ^1.7.1
