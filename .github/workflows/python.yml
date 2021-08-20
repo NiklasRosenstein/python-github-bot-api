@@ -17,8 +17,7 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
     - name: Install dependencies
-      run: |
-        python -m pip install shut==0.17.2 -q
+      run: python -m pip install shut==0.17.2 -q
     - name: Test
       run: shut pkg test --isolate
     - name: Verify package metadata
