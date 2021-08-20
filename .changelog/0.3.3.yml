@@ -8,3 +8,4 @@ changes:
   description: 'use `utf-8` encoding when decoding GitHub event message payload (@AaronKalair,
     #2)'
   fixes: []
+release_date: '2021-08-20'
