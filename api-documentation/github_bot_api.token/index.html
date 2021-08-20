@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>github_bot_api.token - python-github-bot-api</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "github_bot_api.token";
+    var mkdocs_page_input_path = "api-documentation/github_bot_api.token.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> python-github-bot-api</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">API Documentation</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../github_bot_api.app/">github_bot_api.app</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../github_bot_api.event/">github_bot_api.event</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../github_bot_api.flask/">github_bot_api.flask</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../github_bot_api.signature/">github_bot_api.signature</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">github_bot_api.token</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#tokeninfo-objects">TokenInfo Objects</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#exp">exp</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#type">type</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#value">value</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#auth_header">auth_header</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#create_jwt">create_jwt</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#refreshabletokensupplier-objects">RefreshableTokenSupplier Objects</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#jwtsupplier-objects">JwtSupplier Objects</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#app_id">app_id</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#private_key">private_key</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#expires_in">expires_in</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#threshold">threshold</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#installationtokensupplier-objects">InstallationTokenSupplier Objects</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#app_jwt">app_jwt</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#installation_id">installation_id</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#requestor">requestor</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#threshold_1">threshold</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../github_bot_api.utils.mime/">github_bot_api.utils.mime</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../github_bot_api.utils.types/">github_bot_api.utils.types</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../github_bot_api.webhook/">github_bot_api.webhook</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">python-github-bot-api</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>API Documentation &raquo;</li>
+        
+      
+    
+    <li>github_bot_api.token</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/NiklasRosenstein/python-github-bot-api/edit/master/docs/api-documentation/github_bot_api.token.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <p><a id="github_bot_api.token"></a></p>
+<h1 id="github_bot_apitoken">github_bot_api.token</h1>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/7945107fcd50b55b2e73d1eed008c100ea912258/src/github_bot_api/token.py#L2">[view_source]</a></p>
+<p>Generate a JWT from a GitHub application private key.</p>
+<p>Reference: https://docs.github.com/en/free-pro-team@latest/developers/apps/setting-up-your-development-environment-to-create-a-github-app</p>
+<p><a id="github_bot_api.token.TokenInfo"></a></p>
+<h2 id="tokeninfo-objects">TokenInfo Objects</h2>
+<pre><code class="language-python">@dataclass
+class TokenInfo()
+</code></pre>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/7945107fcd50b55b2e73d1eed008c100ea912258/src/github_bot_api/token.py#L22">[view_source]</a></p>
+<p>Represents a token including it's expiration time, type and token string value.</p>
+<p><a id="github_bot_api.token.TokenInfo.exp"></a></p>
+<h4 id="exp">exp</h4>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/7945107fcd50b55b2e73d1eed008c100ea912258/src/github_bot_api/token.py#L28">[view_source]</a></p>
+<p>The timestamp after which the token expires. This is in local client time.</p>
+<p><a id="github_bot_api.token.TokenInfo.type"></a></p>
+<h4 id="type">type</h4>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/7945107fcd50b55b2e73d1eed008c100ea912258/src/github_bot_api/token.py#L31">[view_source]</a></p>
+<p>The type of the token. This is usually <code>Bearer</code> when using <a href="#github_bot_api.token.create_jwt"><code>create_jwt()</code></a>.</p>
+<p><a id="github_bot_api.token.TokenInfo.value"></a></p>
+<h4 id="value">value</h4>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/7945107fcd50b55b2e73d1eed008c100ea912258/src/github_bot_api/token.py#L34">[view_source]</a></p>
+<p>The token value, without the <a href="#github_bot_api.token.TokenInfo.type"><code>type</code></a> prefix.</p>
+<p><a id="github_bot_api.token.TokenInfo.auth_header"></a></p>
+<h4 id="auth_header">auth_header</h4>
+<pre><code class="language-python"> | @property
+ | auth_header() -&gt; str
+</code></pre>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/7945107fcd50b55b2e73d1eed008c100ea912258/src/github_bot_api/token.py#L37">[view_source]</a></p>
+<p>Return the full value to pass into an HTTP <code>Authorization</code> header for this token.</p>
+<p><a id="github_bot_api.token.create_jwt"></a></p>
+<h4 id="create_jwt">create_jwt</h4>
+<pre><code class="language-python">create_jwt(app_id: int, expires_in: int, private_key: str) -&gt; TokenInfo
+</code></pre>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/7945107fcd50b55b2e73d1eed008c100ea912258/src/github_bot_api/token.py#L43">[view_source]</a></p>
+<p>Generate a JWT for a GitHub App.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>app_id</strong>: The GitHub application ID.</li>
+<li><strong>expires_in</strong>: The time until the token expires in seconds. GitHub does not allow
+  an expiration time higher than 10 minutes (the token may be accepted but isn't valid
+  for as long as you might expected).</li>
+<li><strong>private_key</strong>: The RSA private key that was issued for the GitHub bot.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<p>The JWT as a <a href="#github_bot_api.token.TokenInfo"><code>TokenInfo</code></a> object.</p>
+<p><a id="github_bot_api.token.RefreshableTokenSupplier"></a></p>
+<h2 id="refreshabletokensupplier-objects">RefreshableTokenSupplier Objects</h2>
+<pre><code class="language-python">class RefreshableTokenSupplier(Supplier[TokenInfo], metaclass=abc.ABCMeta)
+</code></pre>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/7945107fcd50b55b2e73d1eed008c100ea912258/src/github_bot_api/token.py#L65">[view_source]</a></p>
+<p>Base class for token suppliers.</p>
+<p><a id="github_bot_api.token.JwtSupplier"></a></p>
+<h2 id="jwtsupplier-objects">JwtSupplier Objects</h2>
+<pre><code class="language-python">@dataclass
+class JwtSupplier(RefreshableTokenSupplier)
+</code></pre>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/7945107fcd50b55b2e73d1eed008c100ea912258/src/github_bot_api/token.py#L92">[view_source]</a></p>
+<p>Supplies a JWT Bearer token, refreshing it shortly before it expires.</p>
+<p><a id="github_bot_api.token.JwtSupplier.app_id"></a></p>
+<h4 id="app_id">app_id</h4>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/7945107fcd50b55b2e73d1eed008c100ea912258/src/github_bot_api/token.py#L98">[view_source]</a></p>
+<p>The ID of the GitHub application.</p>
+<p><a id="github_bot_api.token.JwtSupplier.private_key"></a></p>
+<h4 id="private_key">private_key</h4>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/7945107fcd50b55b2e73d1eed008c100ea912258/src/github_bot_api/token.py#L101">[view_source]</a></p>
+<p>The RSA private key to sign the JWT with.</p>
+<p><a id="github_bot_api.token.JwtSupplier.expires_in"></a></p>
+<h4 id="expires_in">expires_in</h4>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/7945107fcd50b55b2e73d1eed008c100ea912258/src/github_bot_api/token.py#L104">[view_source]</a></p>
+<p>The expiration time for the token in seconds. Defaults to 10 minutes (the maximum allowed).</p>
+<p><a id="github_bot_api.token.JwtSupplier.threshold"></a></p>
+<h4 id="threshold">threshold</h4>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/7945107fcd50b55b2e73d1eed008c100ea912258/src/github_bot_api/token.py#L107">[view_source]</a></p>
+<p>If the token is close to expire within this threshold (in seconds), it is renewed.</p>
+<p><a id="github_bot_api.token.InstallationTokenSupplier"></a></p>
+<h2 id="installationtokensupplier-objects">InstallationTokenSupplier Objects</h2>
+<pre><code class="language-python">@dataclass
+class InstallationTokenSupplier(RefreshableTokenSupplier)
+</code></pre>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/7945107fcd50b55b2e73d1eed008c100ea912258/src/github_bot_api/token.py#L120">[view_source]</a></p>
+<p>Supplies a token for the given installation ID.</p>
+<p><a id="github_bot_api.token.InstallationTokenSupplier.app_jwt"></a></p>
+<h4 id="app_jwt">app_jwt</h4>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/7945107fcd50b55b2e73d1eed008c100ea912258/src/github_bot_api/token.py#L126">[view_source]</a></p>
+<p>The JWT token supplier.</p>
+<p><a id="github_bot_api.token.InstallationTokenSupplier.installation_id"></a></p>
+<h4 id="installation_id">installation_id</h4>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/7945107fcd50b55b2e73d1eed008c100ea912258/src/github_bot_api/token.py#L129">[view_source]</a></p>
+<p>The installation id.</p>
+<p><a id="github_bot_api.token.InstallationTokenSupplier.requestor"></a></p>
+<h4 id="requestor">requestor</h4>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/7945107fcd50b55b2e73d1eed008c100ea912258/src/github_bot_api/token.py#L133">[view_source]</a></p>
+<p>The function performing a POST request, accepting as arguments the <code>Authorization</code> header
+and the installation id, returning the JSON payload.</p>
+<p><a id="github_bot_api.token.InstallationTokenSupplier.threshold"></a></p>
+<h4 id="threshold_1">threshold</h4>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/7945107fcd50b55b2e73d1eed008c100ea912258/src/github_bot_api/token.py#L136">[view_source]</a></p>
+<p>If the token is close to expire within this threshold (in seconds), it is renewed.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../github_bot_api.utils.mime/" class="btn btn-neutral float-right" title="github_bot_api.utils.mime">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../github_bot_api.signature/" class="btn btn-neutral" title="github_bot_api.signature"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/NiklasRosenstein/python-github-bot-api/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../github_bot_api.signature/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../github_bot_api.utils.mime/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

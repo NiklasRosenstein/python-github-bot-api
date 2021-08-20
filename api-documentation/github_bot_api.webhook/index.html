@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>github_bot_api.webhook - python-github-bot-api</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "github_bot_api.webhook";
+    var mkdocs_page_input_path = "api-documentation/github_bot_api.webhook.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> python-github-bot-api</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">API Documentation</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../github_bot_api.app/">github_bot_api.app</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../github_bot_api.event/">github_bot_api.event</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../github_bot_api.flask/">github_bot_api.flask</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../github_bot_api.signature/">github_bot_api.signature</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../github_bot_api.token/">github_bot_api.token</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../github_bot_api.utils.mime/">github_bot_api.utils.mime</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../github_bot_api.utils.types/">github_bot_api.utils.types</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">github_bot_api.webhook</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#webhook-objects">Webhook Objects</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#secret">secret</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#listen">listen</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#listen_1">listen</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#dispatch">dispatch</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">python-github-bot-api</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>API Documentation &raquo;</li>
+        
+      
+    
+    <li>github_bot_api.webhook</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/NiklasRosenstein/python-github-bot-api/edit/master/docs/api-documentation/github_bot_api.webhook.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <p><a id="github_bot_api.webhook"></a></p>
+<h1 id="github_bot_apiwebhook">github_bot_api.webhook</h1>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/7945107fcd50b55b2e73d1eed008c100ea912258/src/github_bot_api/webhook.py#L2">[view_source]</a></p>
+<p><a id="github_bot_api.webhook.Webhook"></a></p>
+<h2 id="webhook-objects">Webhook Objects</h2>
+<pre><code class="language-python">@dataclass
+class Webhook()
+</code></pre>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/7945107fcd50b55b2e73d1eed008c100ea912258/src/github_bot_api/webhook.py#L19">[view_source]</a></p>
+<p>Represents a GitHub webhook that listens on an HTTP endpoint for events. Event handlers can be
+registered using the #@on() decorator or <code>register()</code> method.</p>
+<p><a id="github_bot_api.webhook.Webhook.secret"></a></p>
+<h4 id="secret">secret</h4>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/7945107fcd50b55b2e73d1eed008c100ea912258/src/github_bot_api/webhook.py#L27">[view_source]</a></p>
+<p>The webhook secret, if also configured on GitHub. When specified, the payload signature
+is checked before an event is accepted by the underlying HTTP framework.</p>
+<p><a id="github_bot_api.webhook.Webhook.listen"></a></p>
+<h4 id="listen">listen</h4>
+<pre><code class="language-python"> | @t.overload
+ | listen(event: str) -&gt; t.Callable[[T], T]
+</code></pre>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/7945107fcd50b55b2e73d1eed008c100ea912258/src/github_bot_api/webhook.py#L32">[view_source]</a></p>
+<p>Decorator to register an event handler function for the specified <em>event</em>. The event name
+can be an fnmatch pattern.</p>
+<p><a id="github_bot_api.webhook.Webhook.listen"></a></p>
+<h4 id="listen_1">listen</h4>
+<pre><code class="language-python"> | @t.overload
+ | listen(event: str, func: t.Callable[[Event], bool]) -&gt; None
+</code></pre>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/7945107fcd50b55b2e73d1eed008c100ea912258/src/github_bot_api/webhook.py#L39">[view_source]</a></p>
+<p>Directly register an event handler function.</p>
+<p><a id="github_bot_api.webhook.Webhook.dispatch"></a></p>
+<h4 id="dispatch">dispatch</h4>
+<pre><code class="language-python"> | dispatch(event: Event) -&gt; bool
+</code></pre>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/7945107fcd50b55b2e73d1eed008c100ea912258/src/github_bot_api/webhook.py#L54">[view_source]</a></p>
+<p>Dispatch an event on the first handler that matches it.</p>
+<p>Returns <code>True</code> only if the event was handled by a handler.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../github_bot_api.utils.types/" class="btn btn-neutral" title="github_bot_api.utils.types"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/NiklasRosenstein/python-github-bot-api/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../github_bot_api.utils.types/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
