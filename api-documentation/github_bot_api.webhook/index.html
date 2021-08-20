@@ -125,18 +125,18 @@
               
                 <p><a id="github_bot_api.webhook"></a></p>
 <h1 id="github_bot_apiwebhook">github_bot_api.webhook</h1>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/ba9be5aec2d798797e3d6724ed5e627d25774334/src/github_bot_api/webhook.py#L2">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/a228a20f02b1795421667f0123a0b175f97db85a/src/github_bot_api/webhook.py#L2">[view_source]</a></p>
 <p><a id="github_bot_api.webhook.Webhook"></a></p>
 <h2 id="webhook-objects">Webhook Objects</h2>
 <pre><code class="language-python">@dataclass
 class Webhook()
 </code></pre>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/ba9be5aec2d798797e3d6724ed5e627d25774334/src/github_bot_api/webhook.py#L19">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/a228a20f02b1795421667f0123a0b175f97db85a/src/github_bot_api/webhook.py#L19">[view_source]</a></p>
 <p>Represents a GitHub webhook that listens on an HTTP endpoint for events. Event handlers can be
 registered using the #@on() decorator or <code>register()</code> method.</p>
 <p><a id="github_bot_api.webhook.Webhook.secret"></a></p>
 <h4 id="secret">secret</h4>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/ba9be5aec2d798797e3d6724ed5e627d25774334/src/github_bot_api/webhook.py#L27">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/a228a20f02b1795421667f0123a0b175f97db85a/src/github_bot_api/webhook.py#L27">[view_source]</a></p>
 <p>The webhook secret, if also configured on GitHub. When specified, the payload signature
 is checked before an event is accepted by the underlying HTTP framework.</p>
 <p><a id="github_bot_api.webhook.Webhook.listen"></a></p>
@@ -144,7 +144,7 @@ is checked before an event is accepted by the underlying HTTP framework.</p>
 <pre><code class="language-python"> | @t.overload
  | listen(event: str) -&gt; t.Callable[[T], T]
 </code></pre>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/ba9be5aec2d798797e3d6724ed5e627d25774334/src/github_bot_api/webhook.py#L32">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/a228a20f02b1795421667f0123a0b175f97db85a/src/github_bot_api/webhook.py#L32">[view_source]</a></p>
 <p>Decorator to register an event handler function for the specified <em>event</em>. The event name
 can be an fnmatch pattern.</p>
 <p><a id="github_bot_api.webhook.Webhook.listen"></a></p>
@@ -152,13 +152,13 @@ can be an fnmatch pattern.</p>
 <pre><code class="language-python"> | @t.overload
  | listen(event: str, func: t.Callable[[Event], bool]) -&gt; None
 </code></pre>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/ba9be5aec2d798797e3d6724ed5e627d25774334/src/github_bot_api/webhook.py#L39">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/a228a20f02b1795421667f0123a0b175f97db85a/src/github_bot_api/webhook.py#L39">[view_source]</a></p>
 <p>Directly register an event handler function.</p>
 <p><a id="github_bot_api.webhook.Webhook.dispatch"></a></p>
 <h4 id="dispatch">dispatch</h4>
 <pre><code class="language-python"> | dispatch(event: Event) -&gt; bool
 </code></pre>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/ba9be5aec2d798797e3d6724ed5e627d25774334/src/github_bot_api/webhook.py#L54">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/a228a20f02b1795421667f0123a0b175f97db85a/src/github_bot_api/webhook.py#L54">[view_source]</a></p>
 <p>Dispatch an event on the first handler that matches it.</p>
 <p>Returns <code>True</code> only if the event was handled by a handler.</p>
               
