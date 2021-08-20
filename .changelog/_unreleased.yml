@@ -1,0 +1,5 @@
+changes:
+- type: fix
+  component: general
+  description: '`RefreshableTokenSupplier` now inherits from `Supplier`'
+  fixes: []
