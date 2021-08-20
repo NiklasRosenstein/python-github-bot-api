@@ -70,7 +70,7 @@ def accept_event(
   mime_type, parameters = get_mime_components(content_type)
   if mime_type != 'application/json':
     raise InvalidRequest(f'expected Content-Type: application/json, got {content_type}')
-  encoding = dict(parameters).get('encoding', 'ascii')
+  encoding = dict(parameters).get('encoding', 'UTF-8')
 
   if webhook_secret is not None:
     if signature_256:
