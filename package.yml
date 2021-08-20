@@ -15,6 +15,9 @@ test-requirements:
 - types-flask
 - types-jwt
 - types-requests
+dev-requirements:
+- flask
+- PyGithub
 test-drivers:
 - type: pytest
 - type: mypy

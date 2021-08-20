@@ -1,0 +1,38 @@
+loaders:
+  - type: python
+processors:
+  - type: filter
+  - type: smart
+  - type: crossref
+renderer:
+  type: mkdocs
+  pages:
+    - title: Home
+      name: index
+      source: README.md
+    - title: API Documentation
+      children:
+        - title: github_bot_api.app
+          contents: [ github_bot_api.app, github_bot_api.app.* ]
+        - title: github_bot_api.event
+          contents: [ github_bot_api.event, github_bot_api.event.* ]
+        - title: github_bot_api.flask
+          contents: [ github_bot_api.flask, github_bot_api.flask.* ]
+        - title: github_bot_api.signature
+          contents: [ github_bot_api.signature, github_bot_api.signature.* ]
+        - title: github_bot_api.token
+          contents: [ github_bot_api.token, github_bot_api.token.* ]
+        - title: github_bot_api.utils.mime
+          contents: [ github_bot_api.utils.mime, github_bot_api.utils.mime.* ]
+        - title: github_bot_api.utils.types
+          contents: [ github_bot_api.utils.types, github_bot_api.utils.types.* ]
+        - title: github_bot_api.webhook
+          contents: [ github_bot_api.webhook, github_bot_api.webhook.* ]
+  markdown:
+    source_linker:
+      type: github
+      repo: NiklasRosenstein/python-github-bot-api
+  mkdocs_config:
+    site_name: python-github-bot-api
+    theme: readthedocs
+    repo_url: https://github.com/NiklasRosenstein/python-github-bot-api

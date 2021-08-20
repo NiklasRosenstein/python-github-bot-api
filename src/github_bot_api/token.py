@@ -11,7 +11,7 @@ import logging
 import threading
 import time
 import typing as t
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 import jwt
 from .utils.types import Supplier
 
@@ -20,12 +20,23 @@ logger = logging.getLogger(__name__)
 
 @dataclass
 class TokenInfo:
+  """
+  Represents a token including it's expiration time, type and token string value.
+  """
+
+  #: The timestamp after which the token expires. This is in local client time.
   exp: int
+
+  #: The type of the token. This is usually `Bearer` when using #create_jwt().
   type: str
+
+  #: The token value, without the #type prefix.
   value: str
 
   @property
   def auth_header(self) -> str:
+    " Return the full value to pass into an HTTP `Authorization` header for this token. "
+
     return f'{self.type} {self.value}'
 
 
@@ -33,12 +44,15 @@ def create_jwt(app_id: int, expires_in: int, private_key: str) -> TokenInfo:
   """
   Generate a JWT for a GitHub App.
 
-  :param app_id: The GitHub application ID.
-  :param expires_in: The time until the token expires in seconds. GitHub does not allow
+  # Arguments
+  app_id: The GitHub application ID.
+  expires_in: The time until the token expires in seconds. GitHub does not allow
     an expiration time higher than 10 minutes (the token may be accepted but isn't valid
     for as long as you might expected).
-  :param private_key: The RSA private key that was issued for the GitHub bot.
-  :return: The JWT.
+  private_key: The RSA private key that was issued for the GitHub bot.
+
+  # Returns
+  The JWT as a #TokenInfo object.
   """
 
   now = int(time.time())
@@ -48,7 +62,7 @@ def create_jwt(app_id: int, expires_in: int, private_key: str) -> TokenInfo:
   return TokenInfo(exp, 'Bearer', token)
 
 
-class RefreshableTokenSupplier(metaclass=abc.ABCMeta):
+class RefreshableTokenSupplier(Supplier[TokenInfo], metaclass=abc.ABCMeta):
   """
   Base class for token suppliers.
   """

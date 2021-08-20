@@ -5,3 +5,5 @@ __version__ = '0.3.2'
 from .app import GithubApp
 from .event import Event
 from .webhook import Webhook
+
+__all__ = ['GithubApp', 'Event', 'Webhook']

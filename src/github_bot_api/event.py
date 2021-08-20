@@ -17,10 +17,25 @@ logger = logging.getLogger(__name__)
 
 @dataclass
 class Event:
+  """
+  Represents a GitHub webhook event.
+  """
+
+  #: The name of the event. Could be `pull_request`, for example.
   name: str
+
+  #: The delivery ID of the event.
   delivery_id: str
+
+  #: The signature of the event. Will only be set if a Webhook-secret is configured on the
+  #: client side (e.g. in #Webhook.secret / if the *webhook_secret* parameter is passed to
+  #: #accept_event()).
   signature: t.Optional[str]
+
+  #: The user agent invoking the webhook.
   user_agent: str
+
+  #: The event payload.
   payload: t.Dict[str, t.Any]
 
 
@@ -31,6 +46,13 @@ def accept_event(
 ) -> Event:
   """
   Converts thee HTTP *headers* and the *raw_body* to an #Event object.
+
+  # Arguments
+  headers: The HTTP headers. Must have `X-Github-Event`, `X-Github-Delivery`, `User-Agent`, `Content-Type`.
+    May have `X-Hub-Signature` or `X-Hub-Signature-256`.
+  raw_body: The raw request body for the event. This is converted into a JSON payload.
+  webhook_secret: If specified, the `X-Hub-Signature` or `X-Hub-Signature-256` headers are used to verify
+    the signature of the payload. If not specified, the client does not validate the signature.
   """
 
   event_name = headers.get('X-GitHub-Event')
@@ -68,4 +90,6 @@ def accept_event(
 
 
 class InvalidRequest(Exception):
-  pass
+  """
+  Raised when an invalid request is passed to #accept_event().
+  """
