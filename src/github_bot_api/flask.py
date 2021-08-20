@@ -12,7 +12,7 @@ from .webhook import Webhook
 def create_event_handler(webhook: Webhook) -> t.Callable[[], t.Tuple[t.Text, int, t.Dict[str, str]]]:
   def event_handler():
     event = accept_event(
-      flask.request.headers,
+      t.cast(t.Mapping[str, str], flask.request.headers),
       flask.request.get_data(),
       webhook.secret)
     webhook.dispatch(event)

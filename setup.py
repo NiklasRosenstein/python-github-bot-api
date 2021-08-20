@@ -22,6 +22,14 @@ requirements = [
   'cryptography >=3.1.1,<4.0.0',
   'requests >=2.25.0,<3.0.0',
 ]
+test_requirements = [
+  'PyGithub',
+  'types-flask',
+  'types-jwt',
+  'types-requests',
+]
+extras_require = {}
+extras_require['test'] = test_requirements
 
 setuptools.setup(
   name = 'github-bot-api',
@@ -37,8 +45,8 @@ setuptools.setup(
   package_dir = {'': 'src'},
   include_package_data = True,
   install_requires = requirements,
-  extras_require = {},
-  tests_require = [],
+  extras_require = extras_require,
+  tests_require = test_requirements,
   python_requires = '>=3.8.0,<4.0.0',
   data_files = [],
   entry_points = {},
