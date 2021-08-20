@@ -21,4 +21,4 @@ jobs:
     - name: Test
       run: shut pkg test --isolate
     - name: Verify package metadata
-      run: shut update --verify
+      run: shut pkg update --verify
