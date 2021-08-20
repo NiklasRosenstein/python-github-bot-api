@@ -39,7 +39,7 @@ setuptools.setup(
   description = 'API for creating GitHub bots and webhooks in Python.',
   long_description = long_description,
   long_description_content_type = 'text/markdown',
-  url = 'https://github.com/NiklasRosenstein/python-github-bot-api',
+  url = 'https://niklasrosenstein.github.io/python-github-bot-api/',
   license = 'MIT',
   packages = setuptools.find_packages('src', ['test', 'test.*', 'tests', 'tests.*', 'docs', 'docs.*']),
   package_dir = {'': 'src'},
