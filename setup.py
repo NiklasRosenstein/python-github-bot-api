@@ -9,25 +9,7 @@ import sys
 
 command = sys.argv[1] if len(sys.argv) >= 2 else None
 
-def _tempcopy(src, dst):
-  import atexit, shutil
-  if not os.path.isfile(dst):
-    if not os.path.isfile(src):
-      msg = '"{}" does not exist, and cannot copy it from "{}" either'.format(dst, src)
-      # NOTE: In dist/build commands that are not invoked by Pip, we enforce that the license file
-      #       must be present. See https://github.com/NiklasRosenstein/shut/issues/22
-      if command and 'PIP_REQ_TRACKER' not in os.environ and ('build' in command or 'dist' in command):
-        raise RuntimeError(msg)
-      print('warning:', msg, file=sys.stderr)
-      return
-    shutil.copyfile(src, dst)
-    atexit.register(lambda: os.remove(dst))
-
-
-_tempcopy('../LICENSE.txt', 'LICENSE.txt')
-
 readme_file = 'README.md'
-_tempcopy('../README.md', readme_file)
 if os.path.isfile(readme_file):
   with io.open(readme_file, encoding='utf8') as fp:
     long_description = fp.read()
@@ -46,10 +28,10 @@ setuptools.setup(
   version = '0.3.2',
   author = 'Niklas Rosenstein',
   author_email = 'nrosenstein@palantir.com',
-  description = 'Package description here.',
+  description = 'API for creating GitHub bots and webhooks in Python.',
   long_description = long_description,
   long_description_content_type = 'text/markdown',
-  url = None,
+  url = 'https://github.com/NiklasRosenstein/python-github-bot-api',
   license = 'MIT',
   packages = setuptools.find_packages('src', ['test', 'test.*', 'tests', 'tests.*', 'docs', 'docs.*']),
   package_dir = {'': 'src'},
