@@ -19,5 +19,4 @@ dev-requirements:
 - flask
 - PyGithub
 test-drivers:
-- type: pytest
 - type: mypy
