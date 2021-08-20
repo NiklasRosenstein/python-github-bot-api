@@ -3,3 +3,8 @@ changes:
   component: general
   description: '`RefreshableTokenSupplier` now inherits from `Supplier`'
   fixes: []
+- type: fix
+  component: general
+  description: 'use `utf-8` encoding when decoding GitHub event message payload (@AaronKalair,
+    #2)'
+  fixes: []
