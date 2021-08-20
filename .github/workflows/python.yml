@@ -18,3 +18,5 @@ jobs:
         python -m pip install shut==0.17.2 -q
     - name: Test
       run: shut -C github-bot-api pkg test --isolate
+    - name: Verify package metadata
+      run: shut -C github-bot-api  update --verify

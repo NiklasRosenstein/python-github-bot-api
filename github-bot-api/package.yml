@@ -13,3 +13,6 @@ requirements:
 typed: true
 changelog:
   directory: ../.changelog
+test-drivers:
+- type: pytest
+- type: mypy

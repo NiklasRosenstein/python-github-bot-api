@@ -7,11 +7,18 @@ import os
 import setuptools
 import sys
 
+command = sys.argv[1] if len(sys.argv) >= 2 else None
+
 def _tempcopy(src, dst):
   import atexit, shutil
   if not os.path.isfile(dst):
     if not os.path.isfile(src):
-      print('warning: source file "{}" for destination "{}" does not exist'.format(src, dst))
+      msg = '"{}" does not exist, and cannot copy it from "{}" either'.format(dst, src)
+      # NOTE: In dist/build commands that are not invoked by Pip, we enforce that the license file
+      #       must be present. See https://github.com/NiklasRosenstein/shut/issues/22
+      if command and 'PIP_REQ_TRACKER' not in os.environ and ('build' in command or 'dist' in command):
+        raise RuntimeError(msg)
+      print('warning:', msg, file=sys.stderr)
       return
     shutil.copyfile(src, dst)
     atexit.register(lambda: os.remove(dst))
