@@ -11,7 +11,7 @@ import typing as t
 
 import deprecated
 import requests
-import urllib3
+import urllib3  # type: ignore[import]
 from nr.functional import coalesce
 
 from . import __version__
@@ -37,7 +37,6 @@ class GithubClientSettings:
   per_page: t.Optional[int] = None
   verify: t.Optional[bool] = None
   retry: t.Optional[urllib3.retry.Retry] = None
-  pool_size: t.Optional[int] = None
 
   def update(self, other: 'GithubClientSettings') -> 'GithubClientSettings':
     result = GithubClientSettings()
@@ -53,13 +52,12 @@ class GithubClientSettings:
     return github.Github(
       login_or_token=login_or_token,
       jwt=jwt,
-      base_url=self.base_url,
-      user_agent=self.user_agent,
-      timeout=coalesce(self.timeout, github.MainClass.DEFAULT_TIMEOUT),
-      per_page=coalesce(self.per_page, github.MainClass.DEFAULT_PER_PAGE),
+      base_url=self.base_url or github.MainClass.DEFAULT_BASE_URL,  # type: ignore[attr-defined]
+      user_agent=self.user_agent or "PyGithub/Python",
+      timeout=coalesce(self.timeout, github.MainClass.DEFAULT_TIMEOUT),  # type: ignore[attr-defined]
+      per_page=coalesce(self.per_page, github.MainClass.DEFAULT_PER_PAGE),  # type: ignore[attr-defined]
       verify=coalesce(self.verify, True),
-      retry=self.retry,
-      pool_size=self.pool_size)
+      retry=self.retry)
 
 
 @dataclasses.dataclass
@@ -130,7 +128,7 @@ class GithubApp:
 
     return JwtSupplier(self.app_id, self.private_key)
 
-  @deprecated.deprecated(reason='use GithubApp.app_client() instead', version='0.4.0')
+  @deprecated.deprecated(reason='use GithubApp.app_client() instead', version='0.4.0')  # type: ignore[misc]
   @property
   def client(self) -> 'github.Github':
     """

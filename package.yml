@@ -22,3 +22,6 @@ dev-requirements:
 - PyGithub
 test-drivers:
 - type: mypy
+  args:
+  - --show-error-codes
+  - --warn-unused-ignores

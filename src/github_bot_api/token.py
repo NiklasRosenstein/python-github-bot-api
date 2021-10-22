@@ -142,6 +142,6 @@ class InstallationTokenSupplier(RefreshableTokenSupplier):
 
   def _new_token(self) -> TokenInfo:
     logger.info('Fetching token for installation %s', self.installation_id)
-    data = self.requestor(self.app_jwt().auth_header, self.installation_id)  # type: ignore
+    data = self.requestor(self.app_jwt().auth_header, self.installation_id)
     expires_at = datetime.datetime.strptime(data['expires_at'], '%Y-%m-%dT%H:%M:%S%z')
     return TokenInfo(int(expires_at.timestamp()), 'token', data['token'])

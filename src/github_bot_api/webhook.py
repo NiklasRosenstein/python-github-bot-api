@@ -63,7 +63,7 @@ class Webhook:
     for handler in self.handlers:
       if fnmatch.fnmatch(event.name, handler.event):
         matched = True
-        if handler.func(event):  # type: ignore
+        if handler.func(event):
           return True
     else:
       logger.info(f'Event %r (id: %r) goes {"unhandled" if matched else "unmatched"}.',
