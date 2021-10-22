@@ -62,7 +62,6 @@ class GithubClientSettings:
       pool_size=self.pool_size)
 
 
-
 @dataclasses.dataclass
 class GithubApp:
   """
