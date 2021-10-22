@@ -12,6 +12,7 @@ requirements:
 - requests ^2.25.0
 - Deprecated ^1.2.12
 - urllib3 ^1.26.6
+- nr.functional ^0.2.0
 test-requirements:
 - PyGithub
 - types-flask
@@ -21,7 +22,7 @@ dev-requirements:
 - flask
 - PyGithub
 test-drivers:
-- type: mypy
-  args:
+- args:
   - --show-error-codes
   - --warn-unused-ignores
+  type: mypy

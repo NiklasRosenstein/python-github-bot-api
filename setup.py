@@ -21,6 +21,7 @@ requirements = [
   'requests >=2.25.0,<3.0.0',
   'Deprecated >=1.2.12,<2.0.0',
   'urllib3 >=1.26.6,<2.0.0',
+  'nr.functional >=0.2.0,<1.0.0',
 ]
 test_requirements = [
   'PyGithub',
