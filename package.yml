@@ -1,15 +1,16 @@
 name: github-bot-api
 version: 0.3.3
 author: Niklas Rosenstein <nrosenstein@palantir.com>
-description: API for creating GitHub bots and webhooks in Python.
-url: https://niklasrosenstein.github.io/python-github-bot-api/
 license: MIT
+url: https://niklasrosenstein.github.io/python-github-bot-api/
+description: API for creating GitHub bots and webhooks in Python.
+typed: true
 requirements:
 - python ^3.8
 - PyJWT ^1.7.1
 - cryptography ^3.1.1
 - requests ^2.25.0
-typed: true
+- Deprecated ^1.2.12
 test-requirements:
 - PyGithub
 - types-flask

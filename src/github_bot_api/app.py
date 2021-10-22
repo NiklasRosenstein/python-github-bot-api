@@ -3,12 +3,17 @@
 Registry for GitHub event handlers.
 """
 
+import dataclasses
 import logging
 import sys
 import threading
 import typing as t
-from dataclasses import dataclass
+
+import deprecated
 import requests
+import urllib3
+from nr.functional import coalesce
+
 from . import __version__
 from .token import InstallationTokenSupplier, JwtSupplier, TokenInfo
 
@@ -20,7 +25,45 @@ if t.TYPE_CHECKING:
   import github
 
 
-@dataclass
+@dataclasses.dataclass
+class GithubClientSettings:
+  """
+  Settings for constructing a #github.Github client object.
+  """
+
+  base_url: t.Optional[str] = None
+  user_agent: t.Optional[str] = None
+  timeout: t.Optional[float] = None
+  per_page: t.Optional[int] = None
+  verify: t.Optional[bool] = None
+  retry: t.Optional[urllib3.retry.Retry] = None
+  pool_size: t.Optional[int] = None
+
+  def update(self, other: 'GithubClientSettings') -> 'GithubClientSettings':
+    result = GithubClientSettings()
+    for field in dataclasses.fields(self):
+      value = getattr(other, field.name)
+      if value is None:
+        value = getattr(self, field.name)
+      setattr(result, field.name, value)
+    return result
+
+  def make_client(self, login_or_token: t.Optional[str] = None, jwt: t.Optional[str] = None) -> 'github.Github':
+    import github, github.MainClass
+    return github.Github(
+      login_or_token=login_or_token,
+      jwt=jwt,
+      base_url=self.base_url,
+      user_agent=self.user_agent,
+      timeout=coalesce(self.timeout, github.MainClass.DEFAULT_TIMEOUT),
+      per_page=coalesce(self.per_page, github.MainClass.DEFAULT_PER_PAGE),
+      verify=coalesce(self.verify, True),
+      retry=self.retry,
+      pool_size=self.pool_size)
+
+
+
+@dataclasses.dataclass
 class GithubApp:
   """
   Represents a GitHub application and all the required details.
@@ -88,8 +131,16 @@ class GithubApp:
 
     return JwtSupplier(self.app_id, self.private_key)
 
+  @deprecated.deprecated(reason='use GithubApp.app_client() instead', version='0.4.0')
   @property
   def client(self) -> 'github.Github':
+    """
+    Use #app_client() instead.
+    """
+
+    return self.app_client()
+
+  def app_client(self, settings: t.Union[GithubClientSettings, t.Dict[str, t.Any], None] = None) -> 'github.Github':
     """
     Returns a PyGithub client for your GitHub application.
 
@@ -100,11 +151,13 @@ class GithubApp:
     This requires you to install `PyGithub`.
     """
 
-    import github
-    return github.Github(
-      jwt=self.jwt.value,
-      base_url=self.v3_api_url,
-      user_agent=self.get_user_agent())
+    if isinstance(settings, dict):
+      settings = GithubClientSettings(**settings)
+    elif settings is None:
+      settings = GithubClientSettings()
+
+    settings = GithubClientSettings(self.v3_api_url).update(settings)
+    return settings.make_client(jwt=self.jwt.value)
 
   def __requestor(self, auth_header: str, installation_id: int) -> t.Dict[str, str]:
     return requests.post(
@@ -135,7 +188,11 @@ class GithubApp:
 
     return self.get_installation_token_supplier(installation_id)()
 
-  def installation_client(self, installation_id: int) -> 'github.Github':
+  def installation_client(
+    self,
+    installation_id: int,
+    settings: t.Union[GithubClientSettings, t.Dict[str, t.Any], None] = None,
+  ) -> 'github.Github':
     """
     Returns a PyGithub client for your GitHub application to act in the scope of the given *installation_id*.
 
@@ -146,8 +203,11 @@ class GithubApp:
     This requires you to install `PyGithub`.
     """
 
-    import github
-    return github.Github(
-      login_or_token=self.installation_token(installation_id).value,
-      base_url=self.v3_api_url,
-      user_agent=self.get_user_agent(installation_id))
+    if isinstance(settings, dict):
+      settings = GithubClientSettings(**settings)
+    elif settings is None:
+      settings = GithubClientSettings()
+
+    token = self.installation_token(installation_id).value
+    settings = GithubClientSettings(self.v3_api_url).update(settings)
+    return settings.make_client(login_or_token=token)
