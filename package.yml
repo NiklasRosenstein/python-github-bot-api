@@ -15,6 +15,7 @@ requirements:
 - nr.functional ^0.2.0
 test-requirements:
 - PyGithub
+- types-deprecated
 - types-flask
 - types-jwt
 - types-requests

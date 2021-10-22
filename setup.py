@@ -25,6 +25,7 @@ requirements = [
 ]
 test_requirements = [
   'PyGithub',
+  'types-deprecated',
   'types-flask',
   'types-jwt',
   'types-requests',
