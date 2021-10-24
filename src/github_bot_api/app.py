@@ -36,7 +36,7 @@ class GithubClientSettings:
   timeout: t.Optional[float] = None
   per_page: t.Optional[int] = None
   verify: t.Optional[bool] = None
-  retry: t.Optional[urllib3.retry.Retry] = None
+  retry: t.Optional[urllib3.Retry] = None
 
   def update(self, other: 'GithubClientSettings') -> 'GithubClientSettings':
     result = GithubClientSettings()
@@ -128,8 +128,8 @@ class GithubApp:
 
     return JwtSupplier(self.app_id, self.private_key)
 
-  @deprecated.deprecated(reason='use GithubApp.app_client() instead', version='0.4.0')  # type: ignore[misc]
   @property
+  @deprecated.deprecated(reason='use GithubApp.app_client() instead', version='0.4.0')  # type: ignore[misc]
   def client(self) -> 'github.Github':
     """
     Use #app_client() instead.
