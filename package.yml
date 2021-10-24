@@ -27,3 +27,4 @@ test-drivers:
   - --show-error-codes
   - --warn-unused-ignores
   type: mypy
+- type: pytest

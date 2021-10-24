@@ -128,8 +128,8 @@ class GithubApp:
 
     return JwtSupplier(self.app_id, self.private_key)
 
-  @property
-  @deprecated.deprecated(reason='use GithubApp.app_client() instead', version='0.4.0')  # type: ignore[misc]
+  @property  # type: ignore[misc]
+  @deprecated.deprecated(reason='use GithubApp.app_client() instead', version='0.4.0')
   def client(self) -> 'github.Github':
     """
     Use #app_client() instead.
