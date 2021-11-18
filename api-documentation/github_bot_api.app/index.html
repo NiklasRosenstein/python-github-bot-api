@@ -143,21 +143,21 @@
               
                 <p><a id="github_bot_api.app"></a></p>
 <h1 id="github_bot_apiapp">github_bot_api.app</h1>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/816f92f45fb133ae81817479f7014bc1a5d637d2/src/github_bot_api/app.py#L2">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/dae176b004fbb6d99bc6b0492b11dafb5425fecf/src/github_bot_api/app.py#L2">[view_source]</a></p>
 <p>Registry for GitHub event handlers.</p>
 <p><a id="github_bot_api.app.GithubClientSettings"></a></p>
 <h2 id="githubclientsettings-objects">GithubClientSettings Objects</h2>
 <pre><code class="language-python">@dataclasses.dataclass
 class GithubClientSettings()
 </code></pre>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/816f92f45fb133ae81817479f7014bc1a5d637d2/src/github_bot_api/app.py#L29">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/dae176b004fbb6d99bc6b0492b11dafb5425fecf/src/github_bot_api/app.py#L29">[view_source]</a></p>
 <p>Settings for constructing a <code>github.Github</code> client object.</p>
 <p><a id="github_bot_api.app.GithubApp"></a></p>
 <h2 id="githubapp-objects">GithubApp Objects</h2>
 <pre><code class="language-python">@dataclasses.dataclass
 class GithubApp()
 </code></pre>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/816f92f45fb133ae81817479f7014bc1a5d637d2/src/github_bot_api/app.py#L64">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/dae176b004fbb6d99bc6b0492b11dafb5425fecf/src/github_bot_api/app.py#L64">[view_source]</a></p>
 <p>Represents a GitHub application and all the required details.</p>
 <p><strong>Example</strong></p>
 <pre><code class="language-py">import os
@@ -175,39 +175,39 @@ print(app.app_client().get_app().owner)
 </code></pre>
 <p><a id="github_bot_api.app.GithubApp.user_agent"></a></p>
 <h4 id="user_agent">user_agent</h4>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/816f92f45fb133ae81817479f7014bc1a5d637d2/src/github_bot_api/app.py#L89">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/dae176b004fbb6d99bc6b0492b11dafb5425fecf/src/github_bot_api/app.py#L89">[view_source]</a></p>
 <p>User agent of the application. This will be respected in <a href="#github_bot_api.app.GithubApp.get_user_agent"><code>get_user_agent()</code></a>.</p>
 <p><a id="github_bot_api.app.GithubApp.app_id"></a></p>
 <h4 id="app_id">app_id</h4>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/816f92f45fb133ae81817479f7014bc1a5d637d2/src/github_bot_api/app.py#L92">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/dae176b004fbb6d99bc6b0492b11dafb5425fecf/src/github_bot_api/app.py#L92">[view_source]</a></p>
 <p>GitHub Application ID.</p>
 <p><a id="github_bot_api.app.GithubApp.private_key"></a></p>
 <h4 id="private_key">private_key</h4>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/816f92f45fb133ae81817479f7014bc1a5d637d2/src/github_bot_api/app.py#L95">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/dae176b004fbb6d99bc6b0492b11dafb5425fecf/src/github_bot_api/app.py#L95">[view_source]</a></p>
 <p>RSA private key to sign the JWT with.</p>
 <p><a id="github_bot_api.app.GithubApp.v3_api_url"></a></p>
 <h4 id="v3_api_url">v3_api_url</h4>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/816f92f45fb133ae81817479f7014bc1a5d637d2/src/github_bot_api/app.py#L98">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/dae176b004fbb6d99bc6b0492b11dafb5425fecf/src/github_bot_api/app.py#L98">[view_source]</a></p>
 <p>GitHub API base URL. Defaults to the public GitHub API.</p>
 <p><a id="github_bot_api.app.GithubApp.get_user_agent"></a></p>
 <h4 id="get_user_agent">get_user_agent</h4>
 <pre><code class="language-python"> | get_user_agent(installation_id: t.Optional[int] = None) -&gt; str
 </code></pre>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/816f92f45fb133ae81817479f7014bc1a5d637d2/src/github_bot_api/app.py#L108">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/dae176b004fbb6d99bc6b0492b11dafb5425fecf/src/github_bot_api/app.py#L108">[view_source]</a></p>
 <p>Create a user agent string for the PyGithub client, including the installation if specified.</p>
 <p><a id="github_bot_api.app.GithubApp.jwt"></a></p>
 <h4 id="jwt">jwt</h4>
 <pre><code class="language-python"> | @property
  | jwt() -&gt; TokenInfo
 </code></pre>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/816f92f45fb133ae81817479f7014bc1a5d637d2/src/github_bot_api/app.py#L119">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/dae176b004fbb6d99bc6b0492b11dafb5425fecf/src/github_bot_api/app.py#L119">[view_source]</a></p>
 <p>Returns the JWT for your GitHub application. The JWT is the token to use with GitHub application APIs.</p>
 <p><a id="github_bot_api.app.GithubApp.jwt_supplier"></a></p>
 <h4 id="jwt_supplier">jwt_supplier</h4>
 <pre><code class="language-python"> | @property
  | jwt_supplier() -&gt; JwtSupplier
 </code></pre>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/816f92f45fb133ae81817479f7014bc1a5d637d2/src/github_bot_api/app.py#L127">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/dae176b004fbb6d99bc6b0492b11dafb5425fecf/src/github_bot_api/app.py#L127">[view_source]</a></p>
 <p>Returns a new <code>JwtSupplier</code> that is used for generating JWT tokens for your GitHub application.</p>
 <p><a id="github_bot_api.app.GithubApp.client"></a></p>
 <h4 id="client">client</h4>
@@ -215,13 +215,13 @@ print(app.app_client().get_app().owner)
  | @deprecated.deprecated(reason='use GithubApp.app_client() instead', version='0.4.0')
  | client() -&gt; 'github.Github'
 </code></pre>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/816f92f45fb133ae81817479f7014bc1a5d637d2/src/github_bot_api/app.py#L136">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/dae176b004fbb6d99bc6b0492b11dafb5425fecf/src/github_bot_api/app.py#L136">[view_source]</a></p>
 <p>Use <a href="#github_bot_api.app.GithubApp.app_client"><code>app_client()</code></a> instead.</p>
 <p><a id="github_bot_api.app.GithubApp.app_client"></a></p>
 <h4 id="app_client">app_client</h4>
 <pre><code class="language-python"> | app_client(settings: t.Union[GithubClientSettings, t.Dict[str, t.Any], None] = None) -&gt; 'github.Github'
 </code></pre>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/816f92f45fb133ae81817479f7014bc1a5d637d2/src/github_bot_api/app.py#L143">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/dae176b004fbb6d99bc6b0492b11dafb5425fecf/src/github_bot_api/app.py#L143">[view_source]</a></p>
 <p>Returns a PyGithub client for your GitHub application.</p>
 <p>Note that the client's token will expire after 10 minutes and you will have to create a new client or update the
 client's token with the value returned by <a href="#github_bot_api.app.GithubApp.jwt"><code>jwt</code></a>. It is recommended that you create a new client for each atomic
@@ -231,20 +231,20 @@ operation you perform.</p>
 <h4 id="get_installation_token_supplier">get_installation_token_supplier</h4>
 <pre><code class="language-python"> | get_installation_token_supplier(installation_id: int) -&gt; InstallationTokenSupplier
 </code></pre>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/816f92f45fb133ae81817479f7014bc1a5d637d2/src/github_bot_api/app.py#L168">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/dae176b004fbb6d99bc6b0492b11dafb5425fecf/src/github_bot_api/app.py#L168">[view_source]</a></p>
 <p>Create an <code>InstallationTokenSupplier</code> for your GitHub application to act within the scope of the given
 <em>installation_id</em>.</p>
 <p><a id="github_bot_api.app.GithubApp.installation_token"></a></p>
 <h4 id="installation_token">installation_token</h4>
 <pre><code class="language-python"> | installation_token(installation_id: int) -&gt; TokenInfo
 </code></pre>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/816f92f45fb133ae81817479f7014bc1a5d637d2/src/github_bot_api/app.py#L184">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/dae176b004fbb6d99bc6b0492b11dafb5425fecf/src/github_bot_api/app.py#L184">[view_source]</a></p>
 <p>A short-hand to retrieve a new installation token for the given <em>installation_id</em>.</p>
 <p><a id="github_bot_api.app.GithubApp.installation_client"></a></p>
 <h4 id="installation_client">installation_client</h4>
 <pre><code class="language-python"> | installation_client(installation_id: int, settings: t.Union[GithubClientSettings, t.Dict[str, t.Any], None] = None) -&gt; 'github.Github'
 </code></pre>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/816f92f45fb133ae81817479f7014bc1a5d637d2/src/github_bot_api/app.py#L191">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/dae176b004fbb6d99bc6b0492b11dafb5425fecf/src/github_bot_api/app.py#L191">[view_source]</a></p>
 <p>Returns a PyGithub client for your GitHub application to act in the scope of the given <em>installation_id</em>.</p>
 <p>Note that the client's token will expire after 10 minutes and you will have to create a new client or update the
 client's token with the value returned by <a href="#github_bot_api.app.GithubApp.jwt"><code>jwt</code></a>. It is recommended that you create a new client for each atomic
