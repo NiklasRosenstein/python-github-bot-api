@@ -116,7 +116,7 @@
                 <h1 id="github-bot-api">github-bot-api</h1>
 <p>API for creating GitHub bots and webhooks in Python.</p>
 <blockquote>
-<p>Note: If you want to make use of <code>GithubApp.client</code> or <code>GithubApp.installation_client()</code>, you
+<p>Note: If you want to make use of <code>GithubApp.app_client()</code> or <code>GithubApp.installation_client()</code>, you
 need to install <code>PyGithub</code>.</p>
 </blockquote>
 <h2 id="quickstart-webhook">Quickstart (Webhook)</h2>
@@ -157,7 +157,7 @@ app = GithubApp(
   app_id=int(os.environ['APP_ID']),
   private_key=private_key)
 
-print(app.client.get_app().owner)
+print(app.app_client().get_app().owner)
 </code></pre>
 <h2 id="combined-example">Combined Example</h2>
 <pre><code class="language-python"># ...
@@ -232,6 +232,6 @@ def on_pull_request(event: Event) -&gt; bool:
 </html>
 
 <!--
-MkDocs version : 1.2.2
-Build Date UTC : 2021-08-20 13:42:14.309402+00:00
+MkDocs version : 1.2.3
+Build Date UTC : 2021-11-18 06:47:01.134943+00:00
 -->

@@ -117,7 +117,7 @@
               
                 <p><a id="github_bot_api.flask"></a></p>
 <h1 id="github_bot_apiflask">github_bot_api.flask</h1>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/43c0b038caaccdadad2e28f80e99ca1a55d500d8/src/github_bot_api/flask.py#L2">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/816f92f45fb133ae81817479f7014bc1a5d637d2/src/github_bot_api/flask.py#L2">[view_source]</a></p>
 <p>Flask binding for handling GitHub webhook events.</p>
 <p>Note that you need to install the <code>flask</code> module separately.</p>
 <p><strong>Example</strong></p>
@@ -139,14 +139,14 @@ flask_app.run()
 <h4 id="create_event_handler">create_event_handler</h4>
 <pre><code class="language-python">create_event_handler(webhook: Webhook) -&gt; t.Callable[[], t.Tuple[t.Text, int, t.Dict[str, str]]]
 </code></pre>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/43c0b038caaccdadad2e28f80e99ca1a55d500d8/src/github_bot_api/flask.py#L32">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/816f92f45fb133ae81817479f7014bc1a5d637d2/src/github_bot_api/flask.py#L32">[view_source]</a></p>
 <p>Creates an event handler flask view that interprets the received HTTP request as a GitHub application
 event and dispatches it via <code>webhook.dispatch()</code>.</p>
 <p><a id="github_bot_api.flask.create_flask_app"></a></p>
 <h4 id="create_flask_app">create_flask_app</h4>
 <pre><code class="language-python">create_flask_app(name: str, webhook: Webhook, path: str = '/event-handler') -&gt; flask.Flask
 </code></pre>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/43c0b038caaccdadad2e28f80e99ca1a55d500d8/src/github_bot_api/flask.py#L48">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/816f92f45fb133ae81817479f7014bc1a5d637d2/src/github_bot_api/flask.py#L48">[view_source]</a></p>
 <p>Creates a new <code>flask.Flask</code> application with a <code>POST</code> event handler under the given <em>path</em> (defaulting
 to <code>/event-handler</code>). This is a useful shorthand to attach your <code>Webhook</code> to an HTTP server.</p>
               
