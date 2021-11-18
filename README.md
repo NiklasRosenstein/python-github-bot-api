@@ -2,7 +2,7 @@
 
 API for creating GitHub bots and webhooks in Python.
 
-> Note: If you want to make use of `GithubApp.client` or `GithubApp.installation_client()`, you
+> Note: If you want to make use of `GithubApp.app_client()` or `GithubApp.installation_client()`, you
 > need to install `PyGithub`.
 
 ## Quickstart (Webhook)
@@ -46,7 +46,7 @@ app = GithubApp(
   app_id=int(os.environ['APP_ID']),
   private_key=private_key)
 
-print(app.client.get_app().owner)
+print(app.app_client().get_app().owner)
 ```
 
 ## Combined Example
