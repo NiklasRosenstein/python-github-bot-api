@@ -1,6 +1,6 @@
 
 __author__ = 'Niklas Rosenstein <nrosenstein@palantir.com>'
-__version__ = '0.3.3'
+__version__ = '0.4.0'
 
 from .app import GithubApp
 from .event import Event

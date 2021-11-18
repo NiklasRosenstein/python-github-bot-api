@@ -3,3 +3,4 @@ changes:
   component: general
   description: add `GithubClientSettings` class and accept a settings parameter in
     `GithubApp.installation_client()` and the new `GithubApp.app_client()` method
+release_date: '2021-11-18'
