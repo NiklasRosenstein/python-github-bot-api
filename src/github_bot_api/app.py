@@ -102,6 +102,9 @@ class GithubApp:
     self._lock = threading.Lock()
     self._installation_tokens: t.Dict[int, InstallationTokenSupplier] = {}
 
+  def _get_base_github_client_settings(self) -> GithubClientSettings:
+    return GithubClientSettings(self.v3_api_url, self.get_user_agent())
+
   def get_user_agent(self, installation_id: t.Optional[int] = None) -> str:
     """
     Create a user agent string for the PyGithub client, including the installation if specified.
@@ -153,7 +156,7 @@ class GithubApp:
     elif settings is None:
       settings = GithubClientSettings()
 
-    settings = GithubClientSettings(self.v3_api_url).update(settings)
+    settings = self._get_base_github_client_settings().update(settings)
     return settings.make_client(jwt=self.jwt.value)
 
   def __requestor(self, auth_header: str, installation_id: int) -> t.Dict[str, str]:
@@ -206,5 +209,5 @@ class GithubApp:
       settings = GithubClientSettings()
 
     token = self.installation_token(installation_id).value
-    settings = GithubClientSettings(self.v3_api_url).update(settings)
+    settings = self._get_base_github_client_settings().update(settings)
     return settings.make_client(login_or_token=token)
