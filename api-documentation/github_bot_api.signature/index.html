@@ -119,13 +119,13 @@
               
                 <p><a id="github_bot_api.signature"></a></p>
 <h1 id="github_bot_apisignature">github_bot_api.signature</h1>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/dae176b004fbb6d99bc6b0492b11dafb5425fecf/src/github_bot_api/signature.py#L2">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/7b68c8954caf79f7b8781aa6f6a20b2a9986d7f5/src/github_bot_api/signature.py#L2">[view_source]</a></p>
 <p>Helper to check the signature of a GitHub event request.</p>
 <p><a id="github_bot_api.signature.compute_signature"></a></p>
 <h4 id="compute_signature">compute_signature</h4>
 <pre><code class="language-python">compute_signature(payload: bytes, secret: bytes, algo: str = 'sha256') -&gt; str
 </code></pre>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/dae176b004fbb6d99bc6b0492b11dafb5425fecf/src/github_bot_api/signature.py#L9">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/7b68c8954caf79f7b8781aa6f6a20b2a9986d7f5/src/github_bot_api/signature.py#L9">[view_source]</a></p>
 <p>Computes the HMAC signature of <em>payload</em> given the specified <em>secret</em> and the given hashing <em>algo</em>.</p>
 <p><strong>Parmeters</strong></p>
 <p>payload: The payload for which the signature should be computed.
@@ -135,7 +135,7 @@ algo: The hash algorithm to use, must be <code>sha1</code> or <code>sha256</code
 <h4 id="check_signature">check_signature</h4>
 <pre><code class="language-python">check_signature(sig: str, payload: bytes, secret: bytes, algo: str = 'sha256') -&gt; None
 </code></pre>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/dae176b004fbb6d99bc6b0492b11dafb5425fecf/src/github_bot_api/signature.py#L24">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/7b68c8954caf79f7b8781aa6f6a20b2a9986d7f5/src/github_bot_api/signature.py#L24">[view_source]</a></p>
 <p>Compares the porivided signature <em>sig</em> with the computed signature of the <em>payload</em> and
 raises a <a href="#github_bot_api.signature.SignatureMismatchException"><code>SignatureMismatchException</code></a> if they do not match. This function uses constant-time
 string comparison to prevent timing analysis.</p>
@@ -143,7 +143,7 @@ string comparison to prevent timing analysis.</p>
 <h2 id="signaturemismatchexception-objects">SignatureMismatchException Objects</h2>
 <pre><code class="language-python">class SignatureMismatchException(Exception)
 </code></pre>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/dae176b004fbb6d99bc6b0492b11dafb5425fecf/src/github_bot_api/signature.py#L36">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/7b68c8954caf79f7b8781aa6f6a20b2a9986d7f5/src/github_bot_api/signature.py#L36">[view_source]</a></p>
 <p>Raised if a signature can not be verified with <code>check_signatuer()</code>.</p>
               
             </div>
