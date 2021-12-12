@@ -4,3 +4,4 @@ changes:
   description: bump PyJWT dependency to `^2.0.0`
   fixes:
   - '#5'
+release_date: '2021-12-12'
