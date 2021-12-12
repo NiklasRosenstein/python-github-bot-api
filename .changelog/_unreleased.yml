@@ -1,0 +1,6 @@
+changes:
+- type: change
+  component: general
+  description: bump PyJWT dependency to `^2.0.0`
+  fixes:
+  - '#5'

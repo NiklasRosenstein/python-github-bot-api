@@ -16,7 +16,7 @@ else:
   long_description = None
 
 requirements = [
-  'PyJWT >=1.7.1,<2.0.0',
+  'PyJWT >=2.0.0,<3.0.0',
   'cryptography >=3.1.1,<4.0.0',
   'requests >=2.25.0,<3.0.0',
   'Deprecated >=1.2.12,<2.0.0',
