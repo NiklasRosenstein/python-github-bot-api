@@ -1,5 +1,5 @@
 name: github-bot-api
-version: 0.5.0
+version: 0.5.1
 author: Niklas Rosenstein <nrosenstein@palantir.com>
 license: MIT
 url: https://niklasrosenstein.github.io/python-github-bot-api/

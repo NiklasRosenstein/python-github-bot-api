@@ -34,7 +34,7 @@ extras_require['test'] = test_requirements
 
 setuptools.setup(
   name = 'github-bot-api',
-  version = '0.5.0',
+  version = '0.5.1',
   author = 'Niklas Rosenstein',
   author_email = 'nrosenstein@palantir.com',
   description = 'API for creating GitHub bots and webhooks in Python.',
