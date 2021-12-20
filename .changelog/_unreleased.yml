@@ -1,0 +1,7 @@
+changes:
+- type: fix
+  component: general
+  description: fix usage of PyJWT `encode()` since >= 2.0 returns a string instead
+    of bytes (@testworksau)
+  fixes:
+  - '#8'
