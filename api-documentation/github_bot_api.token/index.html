@@ -153,7 +153,7 @@
               
                 <p><a id="github_bot_api.token"></a></p>
 <h1 id="github_bot_apitoken">github_bot_api.token</h1>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/830257c1737ed61f0f1af9148c1e72fbf35dcb9c/src/github_bot_api/token.py#L2">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/3e019bb112e790347a047e72c94d8ded2ae9f200/src/github_bot_api/token.py#L2">[view_source]</a></p>
 <p>Generate a JWT from a GitHub application private key.</p>
 <p>Reference: https://docs.github.com/en/free-pro-team@latest/developers/apps/setting-up-your-development-environment-to-create-a-github-app</p>
 <p><a id="github_bot_api.token.TokenInfo"></a></p>
@@ -161,32 +161,32 @@
 <pre><code class="language-python">@dataclass
 class TokenInfo()
 </code></pre>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/830257c1737ed61f0f1af9148c1e72fbf35dcb9c/src/github_bot_api/token.py#L22">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/3e019bb112e790347a047e72c94d8ded2ae9f200/src/github_bot_api/token.py#L22">[view_source]</a></p>
 <p>Represents a token including it's expiration time, type and token string value.</p>
 <p><a id="github_bot_api.token.TokenInfo.exp"></a></p>
 <h4 id="exp">exp</h4>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/830257c1737ed61f0f1af9148c1e72fbf35dcb9c/src/github_bot_api/token.py#L28">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/3e019bb112e790347a047e72c94d8ded2ae9f200/src/github_bot_api/token.py#L28">[view_source]</a></p>
 <p>The timestamp after which the token expires. This is in local client time.</p>
 <p><a id="github_bot_api.token.TokenInfo.type"></a></p>
 <h4 id="type">type</h4>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/830257c1737ed61f0f1af9148c1e72fbf35dcb9c/src/github_bot_api/token.py#L31">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/3e019bb112e790347a047e72c94d8ded2ae9f200/src/github_bot_api/token.py#L31">[view_source]</a></p>
 <p>The type of the token. This is usually <code>Bearer</code> when using <a href="#github_bot_api.token.create_jwt"><code>create_jwt()</code></a>.</p>
 <p><a id="github_bot_api.token.TokenInfo.value"></a></p>
 <h4 id="value">value</h4>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/830257c1737ed61f0f1af9148c1e72fbf35dcb9c/src/github_bot_api/token.py#L34">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/3e019bb112e790347a047e72c94d8ded2ae9f200/src/github_bot_api/token.py#L34">[view_source]</a></p>
 <p>The token value, without the <a href="#github_bot_api.token.TokenInfo.type"><code>type</code></a> prefix.</p>
 <p><a id="github_bot_api.token.TokenInfo.auth_header"></a></p>
 <h4 id="auth_header">auth_header</h4>
 <pre><code class="language-python"> | @property
  | auth_header() -&gt; str
 </code></pre>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/830257c1737ed61f0f1af9148c1e72fbf35dcb9c/src/github_bot_api/token.py#L37">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/3e019bb112e790347a047e72c94d8ded2ae9f200/src/github_bot_api/token.py#L37">[view_source]</a></p>
 <p>Return the full value to pass into an HTTP <code>Authorization</code> header for this token.</p>
 <p><a id="github_bot_api.token.create_jwt"></a></p>
 <h4 id="create_jwt">create_jwt</h4>
 <pre><code class="language-python">create_jwt(app_id: int, expires_in: int, private_key: str) -&gt; TokenInfo
 </code></pre>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/830257c1737ed61f0f1af9148c1e72fbf35dcb9c/src/github_bot_api/token.py#L43">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/3e019bb112e790347a047e72c94d8ded2ae9f200/src/github_bot_api/token.py#L43">[view_source]</a></p>
 <p>Generate a JWT for a GitHub App.</p>
 <p><strong>Arguments</strong></p>
 <ul>
@@ -202,54 +202,54 @@ class TokenInfo()
 <h2 id="refreshabletokensupplier-objects">RefreshableTokenSupplier Objects</h2>
 <pre><code class="language-python">class RefreshableTokenSupplier(Supplier[TokenInfo], metaclass=abc.ABCMeta)
 </code></pre>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/830257c1737ed61f0f1af9148c1e72fbf35dcb9c/src/github_bot_api/token.py#L65">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/3e019bb112e790347a047e72c94d8ded2ae9f200/src/github_bot_api/token.py#L65">[view_source]</a></p>
 <p>Base class for token suppliers.</p>
 <p><a id="github_bot_api.token.JwtSupplier"></a></p>
 <h2 id="jwtsupplier-objects">JwtSupplier Objects</h2>
 <pre><code class="language-python">@dataclass
 class JwtSupplier(RefreshableTokenSupplier)
 </code></pre>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/830257c1737ed61f0f1af9148c1e72fbf35dcb9c/src/github_bot_api/token.py#L92">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/3e019bb112e790347a047e72c94d8ded2ae9f200/src/github_bot_api/token.py#L92">[view_source]</a></p>
 <p>Supplies a JWT Bearer token, refreshing it shortly before it expires.</p>
 <p><a id="github_bot_api.token.JwtSupplier.app_id"></a></p>
 <h4 id="app_id">app_id</h4>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/830257c1737ed61f0f1af9148c1e72fbf35dcb9c/src/github_bot_api/token.py#L98">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/3e019bb112e790347a047e72c94d8ded2ae9f200/src/github_bot_api/token.py#L98">[view_source]</a></p>
 <p>The ID of the GitHub application.</p>
 <p><a id="github_bot_api.token.JwtSupplier.private_key"></a></p>
 <h4 id="private_key">private_key</h4>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/830257c1737ed61f0f1af9148c1e72fbf35dcb9c/src/github_bot_api/token.py#L101">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/3e019bb112e790347a047e72c94d8ded2ae9f200/src/github_bot_api/token.py#L101">[view_source]</a></p>
 <p>The RSA private key to sign the JWT with.</p>
 <p><a id="github_bot_api.token.JwtSupplier.expires_in"></a></p>
 <h4 id="expires_in">expires_in</h4>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/830257c1737ed61f0f1af9148c1e72fbf35dcb9c/src/github_bot_api/token.py#L104">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/3e019bb112e790347a047e72c94d8ded2ae9f200/src/github_bot_api/token.py#L104">[view_source]</a></p>
 <p>The expiration time for the token in seconds. Defaults to 10 minutes (the maximum allowed).</p>
 <p><a id="github_bot_api.token.JwtSupplier.threshold"></a></p>
 <h4 id="threshold">threshold</h4>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/830257c1737ed61f0f1af9148c1e72fbf35dcb9c/src/github_bot_api/token.py#L107">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/3e019bb112e790347a047e72c94d8ded2ae9f200/src/github_bot_api/token.py#L107">[view_source]</a></p>
 <p>If the token is close to expire within this threshold (in seconds), it is renewed.</p>
 <p><a id="github_bot_api.token.InstallationTokenSupplier"></a></p>
 <h2 id="installationtokensupplier-objects">InstallationTokenSupplier Objects</h2>
 <pre><code class="language-python">@dataclass
 class InstallationTokenSupplier(RefreshableTokenSupplier)
 </code></pre>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/830257c1737ed61f0f1af9148c1e72fbf35dcb9c/src/github_bot_api/token.py#L120">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/3e019bb112e790347a047e72c94d8ded2ae9f200/src/github_bot_api/token.py#L120">[view_source]</a></p>
 <p>Supplies a token for the given installation ID.</p>
 <p><a id="github_bot_api.token.InstallationTokenSupplier.app_jwt"></a></p>
 <h4 id="app_jwt">app_jwt</h4>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/830257c1737ed61f0f1af9148c1e72fbf35dcb9c/src/github_bot_api/token.py#L126">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/3e019bb112e790347a047e72c94d8ded2ae9f200/src/github_bot_api/token.py#L126">[view_source]</a></p>
 <p>The JWT token supplier.</p>
 <p><a id="github_bot_api.token.InstallationTokenSupplier.installation_id"></a></p>
 <h4 id="installation_id">installation_id</h4>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/830257c1737ed61f0f1af9148c1e72fbf35dcb9c/src/github_bot_api/token.py#L129">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/3e019bb112e790347a047e72c94d8ded2ae9f200/src/github_bot_api/token.py#L129">[view_source]</a></p>
 <p>The installation id.</p>
 <p><a id="github_bot_api.token.InstallationTokenSupplier.requestor"></a></p>
 <h4 id="requestor">requestor</h4>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/830257c1737ed61f0f1af9148c1e72fbf35dcb9c/src/github_bot_api/token.py#L133">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/3e019bb112e790347a047e72c94d8ded2ae9f200/src/github_bot_api/token.py#L133">[view_source]</a></p>
 <p>The function performing a POST request, accepting as arguments the <code>Authorization</code> header
 and the installation id, returning the JSON payload.</p>
 <p><a id="github_bot_api.token.InstallationTokenSupplier.threshold"></a></p>
 <h4 id="threshold_1">threshold</h4>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/830257c1737ed61f0f1af9148c1e72fbf35dcb9c/src/github_bot_api/token.py#L136">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/3e019bb112e790347a047e72c94d8ded2ae9f200/src/github_bot_api/token.py#L136">[view_source]</a></p>
 <p>If the token is close to expire within this threshold (in seconds), it is renewed.</p>
               
             </div>
