@@ -17,7 +17,6 @@ test-requirements:
 - PyGithub
 - types-deprecated
 - types-flask
-- types-jwt
 - types-requests
 dev-requirements:
 - flask
