@@ -23,7 +23,7 @@ def compute_signature(payload: bytes, secret: bytes, algo: str = 'sha256') -> st
 
 def check_signature(sig: str, payload: bytes, secret: bytes, algo: str = 'sha256') -> None:
   """
-  Compares the porivided signature *sig* with the computed signature of the *payload* and
+  Compares the provided signature *sig* with the computed signature of the *payload* and
   raises a #SignatureMismatchException if they do not match. This function uses constant-time
   string comparison to prevent timing analysis.
   """
@@ -35,7 +35,7 @@ def check_signature(sig: str, payload: bytes, secret: bytes, algo: str = 'sha256
 
 class SignatureMismatchException(Exception):
   """
-  Raised if a signature can not be verified with #check_signatuer().
+  Raised if a signature can not be verified with #check_signature().
   """
 
   _MSG = 'The provided signature does not match the computed signature of the payload.'
