@@ -11,7 +11,7 @@ import typing as t
 
 import deprecated
 import requests
-import urllib3  # type: ignore[import]
+import urllib3
 from nr.functional import coalesce
 
 from . import __version__
