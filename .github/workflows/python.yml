@@ -8,24 +8,18 @@ on:
 
 jobs:
   test:
-
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
-        python-version: ['3.8', '3.9', '3.x']
-
+        python-version: [ "3.8", "3.9", "3.10", "3.x" ]
     steps:
     - uses: actions/checkout@v2
-    - name: Set up Python 3.9
-      uses: actions/setup-python@v2
-      with:
-        python-version: ${{ matrix.python-version }}
-    - name: Install dependencies
-      run: python -m pip install shut==0.21.0 -q
-    - name: Test
-      run: shut pkg test --isolate
-    - name: Verify package metadata
-      run: shut pkg update --verify
+    - uses: python-slap/slap.cli@gha/install/v1
+    - uses: actions/setup-python@v2
+      with: { python-version: "${{ matrix.python-version }}" }
+    - run: slap install -vv --no-venv-check
+    - run: slap test
 
   documentation:
 
