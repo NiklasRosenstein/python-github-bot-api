@@ -64,7 +64,7 @@ def accept_event(
 
     if not event_name or not delivery_id or not user_agent or not content_type:
         raise InvalidRequest("missing required headers")
-    if webhook_secret is not None and not (signature_1 or signature_256):
+    if webhook_secret is not None and not signature_1 and not signature_256:
         raise InvalidRequest("webhook secret is configured but no signature header was received")
 
     mime_type, parameters = get_mime_components(content_type)

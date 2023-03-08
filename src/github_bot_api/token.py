@@ -59,7 +59,7 @@ def create_jwt(app_id: int, expires_in: int, private_key: str) -> TokenInfo:
 
     now = int(time.time())
     exp = now + expires_in
-    payload = {"iss": int(app_id), "iat": now, "exp": exp}
+    payload = {"iss": app_id, "iat": now, "exp": exp}
     token = jwt.encode(payload, private_key, algorithm="RS256")
     return TokenInfo(exp, "Bearer", token)
 

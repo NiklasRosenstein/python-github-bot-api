@@ -15,9 +15,9 @@ def compute_signature(payload: bytes, secret: bytes, algo: str = "sha256") -> st
     algo: The hash algorithm to use, must be `sha1` or `sha256`.
     """
 
-    if algo not in ("sha1", "sha256"):
-        raise ValueError(f"algo must be {{sha1, sha256}}, got {algo!r}")
-    return f"{algo}=" + hmac.new(secret, payload, algo).hexdigest()
+    if algo in {"sha1", "sha256"}:
+        return f"{algo}={hmac.new(secret, payload, algo).hexdigest()}"
+    raise ValueError(f"algo must be {{sha1, sha256}}, got {algo!r}")
 
 
 def check_signature(sig: str, payload: bytes, secret: bytes, algo: str = "sha256") -> None:
