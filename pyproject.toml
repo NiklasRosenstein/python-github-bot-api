@@ -53,14 +53,14 @@ typed = true
 
 [tool.slap.test]
 check = "slap check"
-mypy = "dmypy run src/"
+mypy = "dmypy run src"
 pytest = "pytest -vv"
-# black = "black --check src/ tests/"
-# isort = "isort --check-only src/ tests/"
-# flake8 = "flake8 src/ tests/"
+# black = "black --check src"
+# isort = "isort --check-only src"
+# flake8 = "flake8 src"
 
 [tool.slap.run]
-fmt = "black src/ tests/ && isort src/ tests/"
+fmt = "black src && isort src"
 
 [tool.mypy]
 python_version = "3.8"
