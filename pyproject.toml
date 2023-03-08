@@ -10,7 +10,15 @@ authors = ["Niklas Rosenstein <rosensteinniklas@gmail.com>"]
 license = "MIT"
 readme = "readme.md"
 packages = [{ include = "github_bot_api", from = "src" }]
-classifiers = []
+classifiers = [
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11"
+]
 keywords = []
 
 [tool.poetry.urls]
@@ -25,7 +33,7 @@ python = "^3.8"
 cryptography = "^3.1.1"
 Deprecated = "^1.2.12"
 flask = { version = "*", optional = true }
-PyGithub = { version = "*", optional = true }
+PyGithub = { version = "^1.58", optional = true }
 PyJWT = "^2.0.0"
 requests = "^2.25.0"
 urllib3 = "^1.26.6"
@@ -67,6 +75,7 @@ warn_no_return = true
 warn_redundant_casts = true
 warn_unreachable = true
 warn_unused_ignores = true
+check_untyped_defs = true
 
 [tool.isort]
 profile = "black"
