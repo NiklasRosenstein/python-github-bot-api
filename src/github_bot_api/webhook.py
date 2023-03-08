@@ -67,9 +67,6 @@ class Webhook:
                 matched = True
                 if handler.func(event):
                     return True
-        else:
-            logger.info(
-                f'Event %r (id: %r) goes {"unhandled" if matched else "unmatched"}.', event.name, event.delivery_id
-            )
+        logger.info(f'Event %r (id: %r) goes {"unhandled" if matched else "unmatched"}.', event.name, event.delivery_id)
 
         return matched
