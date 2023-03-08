@@ -33,7 +33,7 @@ class GithubClientSettings:
 
   base_url: t.Optional[str] = None
   user_agent: t.Optional[str] = None
-  timeout: t.Optional[float] = None
+  timeout: t.Optional[int] = None
   per_page: t.Optional[int] = None
   verify: t.Optional[bool] = None
   retry: t.Optional[urllib3.Retry] = None
@@ -48,14 +48,14 @@ class GithubClientSettings:
     return result
 
   def make_client(self, login_or_token: t.Optional[str] = None, jwt: t.Optional[str] = None) -> 'github.Github':
-    import github, github.MainClass
+    import github, github.Consts
     return github.Github(
       login_or_token=login_or_token,
       jwt=jwt,
-      base_url=self.base_url or github.MainClass.DEFAULT_BASE_URL,  # type: ignore[attr-defined]
+      base_url=self.base_url or github.Consts.DEFAULT_BASE_URL,
       user_agent=self.user_agent or "PyGithub/Python",
-      timeout=coalesce(self.timeout, github.MainClass.DEFAULT_TIMEOUT),  # type: ignore[attr-defined]
-      per_page=coalesce(self.per_page, github.MainClass.DEFAULT_PER_PAGE),  # type: ignore[attr-defined]
+      timeout=coalesce(self.timeout, github.Consts.DEFAULT_TIMEOUT),
+      per_page=coalesce(self.per_page, github.Consts.DEFAULT_PER_PAGE),
       verify=coalesce(self.verify, True),
       retry=self.retry)
 
@@ -131,7 +131,7 @@ class GithubApp:
 
     return JwtSupplier(self.app_id, self.private_key)
 
-  @property  # type: ignore[misc]
+  @property
   @deprecated.deprecated(reason='use GithubApp.app_client() instead', version='0.4.0')
   def client(self) -> 'github.Github':
     """
