@@ -110,7 +110,7 @@
               
                 <p><a id="github_bot_api.event"></a></p>
 <h1 id="github_bot_apievent">github_bot_api.event</h1>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/a6c0c258054fa80471b9e20e1af636f66bdfa39d/src/github_bot_api/event.py#L1">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/f2d3e8aa660cb24ae2d4c320b09b0ef28cc9cefd/src/github_bot_api/event.py#L1">[view_source]</a></p>
 <p>Abstraction of a GitHub Webhook event.</p>
 <p>Reference: https://docs.github.com/en/free-pro-team@latest/developers/webhooks-and-events/webhook-events-and-payloads</p>
 <p><a id="github_bot_api.event.Event"></a></p>
@@ -118,35 +118,35 @@
 <pre><code class="language-python">@dataclass
 class Event()
 </code></pre>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/a6c0c258054fa80471b9e20e1af636f66bdfa39d/src/github_bot_api/event.py#L19">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/f2d3e8aa660cb24ae2d4c320b09b0ef28cc9cefd/src/github_bot_api/event.py#L19">[view_source]</a></p>
 <p>Represents a GitHub webhook event.</p>
 <p><a id="github_bot_api.event.Event.name"></a></p>
 <h4 id="name">name</h4>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/a6c0c258054fa80471b9e20e1af636f66bdfa39d/src/github_bot_api/event.py#L25">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/f2d3e8aa660cb24ae2d4c320b09b0ef28cc9cefd/src/github_bot_api/event.py#L25">[view_source]</a></p>
 <p>The name of the event. Could be <code>pull_request</code>, for example.</p>
 <p><a id="github_bot_api.event.Event.delivery_id"></a></p>
 <h4 id="delivery_id">delivery_id</h4>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/a6c0c258054fa80471b9e20e1af636f66bdfa39d/src/github_bot_api/event.py#L28">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/f2d3e8aa660cb24ae2d4c320b09b0ef28cc9cefd/src/github_bot_api/event.py#L28">[view_source]</a></p>
 <p>The delivery ID of the event.</p>
 <p><a id="github_bot_api.event.Event.signature"></a></p>
 <h4 id="signature">signature</h4>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/a6c0c258054fa80471b9e20e1af636f66bdfa39d/src/github_bot_api/event.py#L33">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/f2d3e8aa660cb24ae2d4c320b09b0ef28cc9cefd/src/github_bot_api/event.py#L33">[view_source]</a></p>
 <p>The signature of the event. Will only be set if a Webhook-secret is configured on the
 client side (e.g. in <code>Webhook.secret</code> / if the <em>webhook_secret</em> parameter is passed to
 <a href="#github_bot_api.event.accept_event"><code>accept_event()</code></a>).</p>
 <p><a id="github_bot_api.event.Event.user_agent"></a></p>
 <h4 id="user_agent">user_agent</h4>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/a6c0c258054fa80471b9e20e1af636f66bdfa39d/src/github_bot_api/event.py#L36">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/f2d3e8aa660cb24ae2d4c320b09b0ef28cc9cefd/src/github_bot_api/event.py#L36">[view_source]</a></p>
 <p>The user agent invoking the webhook.</p>
 <p><a id="github_bot_api.event.Event.payload"></a></p>
 <h4 id="payload">payload</h4>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/a6c0c258054fa80471b9e20e1af636f66bdfa39d/src/github_bot_api/event.py#L39">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/f2d3e8aa660cb24ae2d4c320b09b0ef28cc9cefd/src/github_bot_api/event.py#L39">[view_source]</a></p>
 <p>The event payload.</p>
 <p><a id="github_bot_api.event.accept_event"></a></p>
 <h4 id="accept_event">accept_event</h4>
 <pre><code class="language-python">accept_event(headers: t.Mapping[str, str], raw_body: bytes, webhook_secret: t.Optional[str] = None) -&gt; Event
 </code></pre>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/a6c0c258054fa80471b9e20e1af636f66bdfa39d/src/github_bot_api/event.py#L42">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/f2d3e8aa660cb24ae2d4c320b09b0ef28cc9cefd/src/github_bot_api/event.py#L42">[view_source]</a></p>
 <p>Converts thee HTTP <em>headers</em> and the <em>raw_body</em> to an <a href="#github_bot_api.event.Event"><code>Event</code></a> object.</p>
 <p><strong>Arguments</strong></p>
 <ul>
@@ -160,7 +160,7 @@ client side (e.g. in <code>Webhook.secret</code> / if the <em>webhook_secret</em
 <h2 id="invalidrequest-objects">InvalidRequest Objects</h2>
 <pre><code class="language-python">class InvalidRequest(Exception)
 </code></pre>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/a6c0c258054fa80471b9e20e1af636f66bdfa39d/src/github_bot_api/event.py#L92">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/f2d3e8aa660cb24ae2d4c320b09b0ef28cc9cefd/src/github_bot_api/event.py#L92">[view_source]</a></p>
 <p>Raised when an invalid request is passed to <a href="#github_bot_api.event.accept_event"><code>accept_event()</code></a>.</p>
               
             </div>
