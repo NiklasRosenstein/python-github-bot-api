@@ -55,9 +55,9 @@ typed = true
 check = "slap check"
 mypy = "dmypy run src"
 pytest = "pytest -vv"
-# black = "black --check src"
-# isort = "isort --check-only src"
-# flake8 = "flake8 src"
+black = "black --check src"
+isort = "isort --check-only src"
+flake8 = "flake8 src"
 
 [tool.slap.run]
 fmt = "black src && isort src"

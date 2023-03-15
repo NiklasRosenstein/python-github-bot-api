@@ -1,7 +1,8 @@
 """
 Generate a JWT from a GitHub application private key.
 
-Reference: https://docs.github.com/en/free-pro-team@latest/developers/apps/setting-up-your-development-environment-to-create-a-github-app
+Reference: https://docs.github.com/en/free-pro-team@latest/developers/apps/setting-up-your-development-\
+environment-to-create-a-github-app
 """
 
 import abc
