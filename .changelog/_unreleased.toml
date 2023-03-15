@@ -1,0 +1,20 @@
+[[entries]]
+id = "64e49be4-0450-4e23-a8ce-416d5878224a"
+type = "improvement"
+description = "Update dependencies, particularly cryptography"
+author = "@timgates42"
+pr = "https://github.com/NiklasRosenstein/python-github-bot-api/pull/12"
+
+[[entries]]
+id = "97aac093-5e0d-46c3-b276-ab7044018afe"
+type = "fix"
+description = "Change `GithubClientSettings.timeout` to an `Optional[int]` as the PyGithub API expects and integer for the respective argument to the `github.Github` constructor."
+author = "@BoboTiG"
+pr = "https://github.com/NiklasRosenstein/python-github-bot-api/pull/10"
+
+[[entries]]
+id = "480eb51c-bcc9-404a-8fbc-0b7ccc7cfbc2"
+type = "improvement"
+description = "Bump `PyGithub` dependency to `^1.58`."
+author = "@BoboTIiG"
+pr = "https://github.com/NiklasRosenstein/python-github-bot-api/pull/10"
