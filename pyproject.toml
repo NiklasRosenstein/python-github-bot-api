@@ -4,7 +4,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "github-bot-api"
-version = "0.5.1"
+version = "0.5.2"
 description = "API for creating GitHub bots and webhooks in Python."
 authors = ["Niklas Rosenstein <rosensteinniklas@gmail.com>"]
 license = "MIT"
