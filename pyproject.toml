@@ -22,13 +22,13 @@ Repository = "https://github.com/NiklasRosenstein/python-github-bot-api"
 [tool.poetry.dependencies]
 python = "^3.8"
 "nr.functional" = "^0.2.0"
-cryptography = "^3.1.1"
-Deprecated = "^1.2.12"
+cryptography = "^39.0.2"
+Deprecated = "^1.2.13"
 flask = { version = "*", optional = true }
 PyGithub = { version = "*", optional = true }
-PyJWT = "^2.0.0"
-requests = "^2.25.0"
-urllib3 = "^1.26.6"
+PyJWT = "^2.6.0"
+requests = "^2.28.2"
+urllib3 = "^1.26.15"
 
 [tool.poetry.dev-dependencies]
 black = "*"
