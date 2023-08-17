@@ -30,7 +30,7 @@ Repository = "https://github.com/NiklasRosenstein/python-github-bot-api"
 [tool.poetry.dependencies]
 python = "^3.8"
 "nr.functional" = "^0.2.0"
-cryptography = "^39.0.2"
+cryptography = "*"
 Deprecated = "^1.2.13"
 flask = { version = "*", optional = true }
 PyGithub = { version = "^1.58", optional = true }
