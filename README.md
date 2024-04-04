@@ -1,4 +1,4 @@
-<p align="center"><img src="https://i.imgur.com/IkyOvjY.png" height="256px"></p>
+<p align="center"><img src="https://i.imgur.com/5SiDsz8.png"></p>
 <h1 align="center">python-github-bot-api</h1>
 <p align="center">
 <a href="https://pypi.org/project/github-bot-api"><img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/github-bot-api"></a></p>
