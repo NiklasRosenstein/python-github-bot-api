@@ -11,10 +11,10 @@ import typing as t
 import deprecated
 import requests
 import urllib3
-from nr.functional import coalesce
 
 from . import __version__
 from .token import InstallationTokenSupplier, JwtSupplier, TokenInfo
+from .utils.functions import coalesce
 
 T = t.TypeVar("T")
 logger = logging.getLogger(__name__)
