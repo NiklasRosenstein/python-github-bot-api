@@ -1,4 +1,4 @@
-name: Pylint
+name: Python
 
 on:
   push:
@@ -36,5 +36,5 @@ jobs:
     - uses: JamesIves/github-pages-deploy-action@4.1.4
       with:
         branch: gh-pages
-        folder: _site
+        folder: docs/_site
         ssh-key: ${{ secrets.DEPLOY_KEY }}
