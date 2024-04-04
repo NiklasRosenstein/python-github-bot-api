@@ -24,7 +24,6 @@ keywords = []
 [tool.poetry.urls]
 "Bug Tracker" = "https://github.com/NiklasRosenstein/python-github-bot-api/issues"
 Documentation = "https://niklasrosenstein.github.io/python-github-bot-api/"
-Homepage = "https://github.com/NiklasRosenstein/python-github-bot-api"
 Repository = "https://github.com/NiklasRosenstein/python-github-bot-api"
 
 [tool.poetry.dependencies]
