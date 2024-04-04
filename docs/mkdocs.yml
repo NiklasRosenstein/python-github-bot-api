@@ -1,14 +1,17 @@
-site_name: GitHub Bot API
+site_name: python-github-bot-api
 repo_url: https://github.com/NiklasRosenstein/python-github-bot-api
 repo_name: Niklasrosenstein/python-github-bot-api
 docs_dir: content
 theme:
   name: material
   palette:
-    primary: blue
+    scheme: slate
+    primary: teal
     accent: green
   features:
     - navigation.sections
+watch:
+  - ../src
 
 plugins:
   - search
@@ -39,3 +42,9 @@ markdown_extensions:
   - pymdownx.details
   - pymdownx.tabbed:
       alternate_style: true
+
+nav:
+  - index.md
+  - examples.md
+  - api.md
+  - changelog.md
