@@ -16,8 +16,10 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - uses: python-slap/slap.cli@gha/install/v1
+      with: { version: "==1.13.2" }
     - uses: actions/setup-python@v4
       with: { python-version: "${{ matrix.python-version }}" }
+    - run: slap config --venv-type UV
     - run: slap install -vv --no-venv-check
     - run: slap test
     - run: slap publish --dry
