@@ -1,7 +1,3 @@
----
-title: Home
----
-
 <p align="center"><img src="https://i.imgur.com/IkyOvjY.png" height="256px"></p>
 <h1 align="center">python-github-bot-api</h1>
 <p align="center">
