@@ -1,0 +1,41 @@
+site_name: GitHub Bot API
+repo_url: https://github.com/NiklasRosenstein/python-github-bot-api
+repo_name: Niklasrosenstein/python-github-bot-api
+docs_dir: content
+theme:
+  name: material
+  palette:
+    primary: blue
+    accent: green
+  features:
+    - navigation.sections
+
+plugins:
+  - search
+  - mkdocstrings:
+      default_handler: python
+      handlers:
+        python:
+          paths: [../src]
+          options:
+            heading_level: 3
+            show_root_heading: true
+            show_root_full_path: true
+            show_symbol_type_heading: true
+            show_symbol_type_toc: true
+            signature_crossrefs: true
+            separate_signature: true
+            show_signature_annotations: true
+
+markdown_extensions:
+  - admonition
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
