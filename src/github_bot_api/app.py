@@ -65,38 +65,21 @@ class GithubClientSettings:
 class GithubApp:
     """
     Represents a GitHub application and all the required details.
-
-    # Example
-
-    ```py
-    import os
-    from github_bot_api import GithubApp
-
-    with open(os.environ['PRIVATE_KEY_FILE']) as fp:
-      private_key = fp.read()
-
-    app = GithubApp(
-      user_agent='my-bot/0.0.0',
-      app_id=int(os.environ['APP_ID']),
-      private_key=private_key)
-
-    print(app.app_client().get_app().owner)
-    ```
     """
 
     PUBLIC_GITHUB_V3_API_URL = "https://api.github.com"
 
-    #: User agent of the application. This will be respected in #get_user_agent().
     user_agent: str
+    """User agent of the application. This will be respected in #get_user_agent()."""
 
-    #: GitHub Application ID.
     app_id: int
+    """GitHub Application ID."""
 
-    #: RSA private key to sign the JWT with.
     private_key: str
+    """RSA private key to sign the JWT with."""
 
-    #: GitHub API base URL. Defaults to the public GitHub API.
     v3_api_url: str = PUBLIC_GITHUB_V3_API_URL
+    """GitHub API base URL. Defaults to the public GitHub API."""
 
     def __post_init__(self):
         self._jwt_supplier = JwtSupplier(self.app_id, self.private_key)

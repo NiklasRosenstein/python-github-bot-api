@@ -21,22 +21,22 @@ class Event:
     Represents a GitHub webhook event.
     """
 
-    #: The name of the event. Could be `pull_request`, for example.
     name: str
+    """ The name of the event. Could be `pull_request`, for example."""
 
-    #: The delivery ID of the event.
     delivery_id: str
+    """The delivery ID of the event."""
 
-    #: The signature of the event. Will only be set if a Webhook-secret is configured on the
-    #: client side (e.g. in #Webhook.secret / if the *webhook_secret* parameter is passed to
-    #: #accept_event()).
     signature: t.Optional[str]
+    """The signature of the event. Will only be set if a Webhook-secret is configured on the
+    client side (e.g. in [`Webhook.secret`][github_bot_api.webhook.Webhook] / if the *webhook_secret* parameter is
+    passed to [`accept_event()`][github_bot_api.event.accept_event])."""
 
-    #: The user agent invoking the webhook.
     user_agent: str
+    """The user agent invoking the webhook."""
 
-    #: The event payload.
     payload: t.Dict[str, t.Any]
+    """The event payload."""
 
 
 def accept_event(
@@ -47,12 +47,12 @@ def accept_event(
     """
     Converts thee HTTP *headers* and the *raw_body* to an #Event object.
 
-    # Arguments
-    headers: The HTTP headers. Must have `X-Github-Event`, `X-Github-Delivery`, `User-Agent`, `Content-Type`.
-      May have `X-Hub-Signature` or `X-Hub-Signature-256`.
-    raw_body: The raw request body for the event. This is converted into a JSON payload.
-    webhook_secret: If specified, the `X-Hub-Signature` or `X-Hub-Signature-256` headers are used to verify
-      the signature of the payload. If not specified, the client does not validate the signature.
+    Args:
+        headers: The HTTP headers. Must have `X-Github-Event`, `X-Github-Delivery`, `User-Agent`, `Content-Type`.
+                 May have `X-Hub-Signature` or `X-Hub-Signature-256`.
+        raw_body: The raw request body for the event. This is converted into a JSON payload.
+        webhook_secret: If specified, the `X-Hub-Signature` or `X-Hub-Signature-256` headers are used to verify
+                        the signature of the payload. If not specified, the client does not validate the signature.
     """
 
     event_name = headers.get("X-GitHub-Event")
