@@ -8,7 +8,7 @@
     <title>github_bot_api.utils.mime - python-github-bot-api</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
@@ -17,12 +17,11 @@
         var mkdocs_page_url = null;
       </script>
     
-    <script src="../../js/jquery-3.6.0.min.js" defer></script>
     <!--[if lt IE 9]>
       <script src="../../js/html5shiv.min.js"></script>
     <![endif]-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
-      <script>hljs.initHighlightingOnLoad();</script> 
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
 </head>
 
 <body class="wy-body-for-nav" role="document">
@@ -34,7 +33,7 @@
           <a href="../.." class="icon icon-home"> python-github-bot-api
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
@@ -80,9 +79,9 @@
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>API Documentation &raquo;</li>
-      <li>github_bot_api.utils.mime</li>
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">API Documentation</li>
+      <li class="breadcrumb-item active">github_bot_api.utils.mime</li>
     <li class="wy-breadcrumbs-aside">
           <a href="https://github.com/NiklasRosenstein/python-github-bot-api/edit/master/docs/api-documentation/github_bot_api.utils.mime.md" class="icon icon-github"> Edit on GitHub</a>
     </li>
@@ -94,12 +93,12 @@
               
                 <p><a id="github_bot_api.utils.mime"></a></p>
 <h1 id="github_bot_apiutilsmime">github_bot_api.utils.mime</h1>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/d306b87f0f640fc534eeea7c4c49b1a082aa53cc/src/github_bot_api/utils/mime.py#L1">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/ca7a133ee0940d6766039810bcbd1b46976f114a/src/github_bot_api/utils/mime.py#L1">[view_source]</a></p>
 <p><a id="github_bot_api.utils.mime.get_mime_components"></a></p>
 <h4 id="get_mime_components">get_mime_components</h4>
 <pre><code class="language-python">get_mime_components(mime: str) -&gt; t.Tuple[str, t.List[t.Tuple[str, str]]]
 </code></pre>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/d306b87f0f640fc534eeea7c4c49b1a082aa53cc/src/github_bot_api/utils/mime.py#L4">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/ca7a133ee0940d6766039810bcbd1b46976f114a/src/github_bot_api/utils/mime.py#L4">[view_source]</a></p>
 <p>Parses a mime type into it's components, returning the name of the mimetype and a list of
 it's <code>key=value</code> parameters.</p>
               
@@ -141,14 +140,15 @@ it's <code>key=value</code> parameters.</p>
     
   </span>
 </div>
-    <script>var base_url = '../..';</script>
-    <script src="../../js/theme_extra.js" defer></script>
-    <script src="../../js/theme.js" defer></script>
-      <script src="../../search/main.js" defer></script>
-    <script defer>
-        window.onload = function () {
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
             SphinxRtdTheme.Navigation.enable(true);
-        };
+        });
     </script>
 
 </body>

@@ -8,7 +8,7 @@
     <title>github_bot_api.webhook - python-github-bot-api</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
@@ -17,12 +17,11 @@
         var mkdocs_page_url = null;
       </script>
     
-    <script src="../../js/jquery-3.6.0.min.js" defer></script>
     <!--[if lt IE 9]>
       <script src="../../js/html5shiv.min.js"></script>
     <![endif]-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
-      <script>hljs.initHighlightingOnLoad();</script> 
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
 </head>
 
 <body class="wy-body-for-nav" role="document">
@@ -34,7 +33,7 @@
           <a href="../.." class="icon icon-home"> python-github-bot-api
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
@@ -90,9 +89,9 @@
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>API Documentation &raquo;</li>
-      <li>github_bot_api.webhook</li>
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">API Documentation</li>
+      <li class="breadcrumb-item active">github_bot_api.webhook</li>
     <li class="wy-breadcrumbs-aside">
           <a href="https://github.com/NiklasRosenstein/python-github-bot-api/edit/master/docs/api-documentation/github_bot_api.webhook.md" class="icon icon-github"> Edit on GitHub</a>
     </li>
@@ -104,18 +103,18 @@
               
                 <p><a id="github_bot_api.webhook"></a></p>
 <h1 id="github_bot_apiwebhook">github_bot_api.webhook</h1>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/d306b87f0f640fc534eeea7c4c49b1a082aa53cc/src/github_bot_api/webhook.py#L1">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/ca7a133ee0940d6766039810bcbd1b46976f114a/src/github_bot_api/webhook.py#L1">[view_source]</a></p>
 <p><a id="github_bot_api.webhook.Webhook"></a></p>
 <h2 id="webhook-objects">Webhook Objects</h2>
 <pre><code class="language-python">@dataclass
 class Webhook()
 </code></pre>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/d306b87f0f640fc534eeea7c4c49b1a082aa53cc/src/github_bot_api/webhook.py#L19">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/ca7a133ee0940d6766039810bcbd1b46976f114a/src/github_bot_api/webhook.py#L19">[view_source]</a></p>
 <p>Represents a GitHub webhook that listens on an HTTP endpoint for events. Event handlers can be
 registered using the #@on() decorator or <code>register()</code> method.</p>
 <p><a id="github_bot_api.webhook.Webhook.secret"></a></p>
 <h4 id="secret">secret</h4>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/d306b87f0f640fc534eeea7c4c49b1a082aa53cc/src/github_bot_api/webhook.py#L27">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/ca7a133ee0940d6766039810bcbd1b46976f114a/src/github_bot_api/webhook.py#L27">[view_source]</a></p>
 <p>The webhook secret, if also configured on GitHub. When specified, the payload signature
 is checked before an event is accepted by the underlying HTTP framework.</p>
 <p><a id="github_bot_api.webhook.Webhook.listen"></a></p>
@@ -123,7 +122,7 @@ is checked before an event is accepted by the underlying HTTP framework.</p>
 <pre><code class="language-python"> | @t.overload
  | listen(event: str) -&gt; t.Callable[[T], T]
 </code></pre>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/d306b87f0f640fc534eeea7c4c49b1a082aa53cc/src/github_bot_api/webhook.py#L32">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/ca7a133ee0940d6766039810bcbd1b46976f114a/src/github_bot_api/webhook.py#L32">[view_source]</a></p>
 <p>Decorator to register an event handler function for the specified <em>event</em>. The event name
 can be an fnmatch pattern.</p>
 <p><a id="github_bot_api.webhook.Webhook.listen"></a></p>
@@ -131,13 +130,13 @@ can be an fnmatch pattern.</p>
 <pre><code class="language-python"> | @t.overload
  | listen(event: str, func: t.Callable[[Event], bool]) -&gt; None
 </code></pre>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/d306b87f0f640fc534eeea7c4c49b1a082aa53cc/src/github_bot_api/webhook.py#L39">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/ca7a133ee0940d6766039810bcbd1b46976f114a/src/github_bot_api/webhook.py#L39">[view_source]</a></p>
 <p>Directly register an event handler function.</p>
 <p><a id="github_bot_api.webhook.Webhook.dispatch"></a></p>
 <h4 id="dispatch">dispatch</h4>
 <pre><code class="language-python"> | dispatch(event: Event) -&gt; bool
 </code></pre>
-<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/d306b87f0f640fc534eeea7c4c49b1a082aa53cc/src/github_bot_api/webhook.py#L56">[view_source]</a></p>
+<p><a href="https://github.com/NiklasRosenstein/python-github-bot-api/blob/ca7a133ee0940d6766039810bcbd1b46976f114a/src/github_bot_api/webhook.py#L56">[view_source]</a></p>
 <p>Dispatch an event on the first handler that matches it.</p>
 <p>Returns <code>True</code> only if the event was handled by a handler.</p>
               
@@ -176,14 +175,15 @@ can be an fnmatch pattern.</p>
     
   </span>
 </div>
-    <script>var base_url = '../..';</script>
-    <script src="../../js/theme_extra.js" defer></script>
-    <script src="../../js/theme.js" defer></script>
-      <script src="../../search/main.js" defer></script>
-    <script defer>
-        window.onload = function () {
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
             SphinxRtdTheme.Navigation.enable(true);
-        };
+        });
     </script>
 
 </body>
