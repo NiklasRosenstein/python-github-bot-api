@@ -8,7 +8,6 @@ import sys
 import threading
 import typing as t
 
-import deprecated
 import requests
 import urllib3
 
@@ -132,15 +131,6 @@ class GithubApp:
         """
 
         return JwtSupplier(self.app_id, self.private_key)
-
-    @property
-    @deprecated.deprecated(reason="use GithubApp.app_client() instead", version="0.4.0")
-    def client(self) -> "github.Github":
-        """
-        Use #app_client() instead.
-        """
-
-        return self.app_client()
 
     def app_client(self, settings: t.Union[GithubClientSettings, t.Dict[str, t.Any], None] = None) -> "github.Github":
         """

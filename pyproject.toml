@@ -29,7 +29,6 @@ Repository = "https://github.com/NiklasRosenstein/python-github-bot-api"
 [tool.poetry.dependencies]
 python = "^3.8"
 cryptography = "^42.0.5"
-Deprecated = "^1.2.13"
 flask = { version = "*", optional = true }
 PyGithub = { version = "^1.58", optional = true }
 PyJWT = "^2.6.0"
@@ -42,7 +41,6 @@ flake8 = "*"
 isort = "*"
 mypy = "*"
 pytest = "*"
-types-deprecated = "*"
 types-flask = "*"
 types-requests = "*"
 
