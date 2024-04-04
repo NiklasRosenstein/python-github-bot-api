@@ -1,0 +1,5 @@
+mkdocs==1.5.3
+pymdown-extensions
+mkdocstrings[python]
+mkdocs-material
+black
