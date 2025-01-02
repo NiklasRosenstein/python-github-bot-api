@@ -1,0 +1,13 @@
+release-date = "2025-01-03"
+
+[[entries]]
+id = "6da27e0d-688c-49f7-afd2-d12afe329316"
+type = "breaking change"
+description = "Drop Python 3.8 support."
+author = "@NiklasRosenstein"
+
+[[entries]]
+id = "a1dc4bde-24c9-452a-a4c8-87fe2ecd85fc"
+type = "hygiene"
+description = "Migrate project from Poetry to UV"
+author = "@NiklasRosenstein"

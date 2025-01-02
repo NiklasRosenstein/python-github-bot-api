@@ -4,10 +4,10 @@ release-date = "2024-04-04"
 id = "7647ac05-5c89-4b55-a03e-58a96fea2797"
 type = "hygiene"
 description = "Remove dependency on `nr.functional`"
-author = "niklas.rosenstein@helsing.ai"
+author = "@NiklasRosenstein"
 
 [[entries]]
 id = "87fbb576-b5fe-446d-8b37-78c233c45d2a"
 type = "breaking change"
 description = "Remove deprecated `GithubApp.client` (use `GithubApp.app_client()` instead)"
-author = "niklas.rosenstein@helsing.ai"
+author = "@NiklasRosenstein"
