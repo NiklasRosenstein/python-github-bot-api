@@ -38,7 +38,7 @@ jobs:
         version: "0.5.14"
     - run: uvx --from slap-cli slap changelog format --markdown --all > docs/content/changelog.md
     - run: cd docs && uv run mkdocs build --site-dir _site
-    - uses: JamesIves/github-pages-deploy-action@4.1.4
+    - uses: JamesIves/github-pages-deploy-action@v4.7.2
       with:
         branch: gh-pages
         folder: docs/_site
