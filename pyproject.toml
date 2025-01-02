@@ -1,15 +1,24 @@
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
 
-[tool.poetry]
+[project]
+authors = [
+    {name = "Niklas Rosenstein", email = "rosensteinniklas@gmail.com"},
+]
+license = {text = "MIT"}
+requires-python = "<4.0,>=3.8"
+dependencies = [
+    "cryptography<43.0.0,>=42.0.5",
+    "pygithub>=2.5.0",
+    "PyJWT<3.0.0,>=2.6.0",
+    "requests<3.0.0,>=2.28.2",
+    "urllib3<2.0.0,>=1.26.15",
+]
 name = "github-bot-api"
 version = "0.6.0"
 description = "API for creating GitHub bots and webhooks in Python."
-authors = ["Niklas Rosenstein <rosensteinniklas@gmail.com>"]
-license = "MIT"
 readme = "README.md"
-packages = [{ include = "github_bot_api", from = "src" }]
 classifiers = [
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
@@ -17,46 +26,16 @@ classifiers = [
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11"
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
 ]
 keywords = []
 
-[tool.poetry.urls]
+[project.urls]
 "Bug Tracker" = "https://github.com/NiklasRosenstein/python-github-bot-api/issues"
 Documentation = "https://niklasrosenstein.github.io/python-github-bot-api/"
 Repository = "https://github.com/NiklasRosenstein/python-github-bot-api"
-
-[tool.poetry.dependencies]
-python = "^3.8"
-cryptography = "^42.0.5"
-flask = { version = "*", optional = true }
-PyGithub = { version = "^1.58", optional = true }
-PyJWT = "^2.6.0"
-requests = "^2.28.2"
-urllib3 = "^1.26.15"
-
-[tool.poetry.dev-dependencies]
-black = "*"
-flake8 = "*"
-isort = "*"
-mypy = "*"
-pytest = "*"
-types-flask = "*"
-types-requests = "*"
-
-[tool.slap]
-typed = true
-
-[tool.slap.test]
-check = "slap check"
-mypy = "dmypy run src"
-pytest = "pytest -vv"
-black = "black --check src"
-isort = "isort --check-only src"
-flake8 = "flake8 src"
-
-[tool.slap.run]
-fmt = "black src && isort src"
 
 [tool.mypy]
 python_version = "3.8"
@@ -73,10 +52,14 @@ warn_unreachable = true
 warn_unused_ignores = true
 check_untyped_defs = true
 
-[tool.isort]
-profile = "black"
-line_length = 120
-combine_as_imports = true
-
-[tool.black]
+[tool.ruff]
 line-length = 120
+
+[tool.uv]
+dev-dependencies = [
+    "mypy",
+    "pytest",
+    "ruff>=0.8.5",
+    "types-flask",
+    "types-requests",
+]
