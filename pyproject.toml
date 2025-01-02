@@ -13,7 +13,7 @@ dependencies = [
     "pygithub>=2.5.0",
     "PyJWT<3.0.0,>=2.6.0",
     "requests<3.0.0,>=2.28.2",
-    "urllib3<2.0.0,>=1.26.15",
+    "urllib3<2.4.0,>=2.3.0",
 ]
 name = "github-bot-api"
 version = "0.6.0"
