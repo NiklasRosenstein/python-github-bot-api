@@ -59,6 +59,16 @@ dev-dependencies = [
     "mypy",
     "pytest",
     "ruff>=0.8.5",
+    "types-deprecated>=1.2.15.20241117",
     "types-flask",
     "types-requests",
 ]
+
+[tool.slap.test]
+ruff-fmt = "ruff format --check ."
+ruff-check = "ruff check ."
+mypy = "mypy ."
+pytest = "pytest ."
+
+[tool.slap.run]
+fmt = "ruff format ."

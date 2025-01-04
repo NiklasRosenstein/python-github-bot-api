@@ -23,10 +23,7 @@ jobs:
       with:
         python-version: "${{ matrix.python-version }}"
     - run: uv sync --all-extras --dev
-    - run: uv run ruff check .
-    - run: uv run ruff format --check .
-    - run: uv run mypy .
-    - run: uv run pytest .
+    - run: uvx --from slap-cli slap test
 
   documentation:
     runs-on: ubuntu-latest
