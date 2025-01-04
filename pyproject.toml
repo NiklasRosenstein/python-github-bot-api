@@ -72,3 +72,5 @@ pytest = "pytest ."
 
 [tool.slap.run]
 fmt = "ruff format ."
+docs-serve = "slap changelog format --all --markdown > docs/content/changelog.md && cd docs && uv run mkdocs serve"
+docs-build = "slap changelog format --all --markdown > docs/content/changelog.md && cd docs && uv run mkdocs build"
