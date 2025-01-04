@@ -1,0 +1,5 @@
+[[entries]]
+id = "afe1b9c3-a4d9-4f33-9587-ae430f672646"
+type = "deprecation"
+description = "Rename `GithubApp.get_installation_token_supplier()` to `.installation_token_supplier()` for consistency"
+author = "@NiklasRosenstein"

@@ -8,6 +8,7 @@ import sys
 import threading
 import typing as t
 
+import deprecated
 import requests
 import urllib3
 
@@ -140,7 +141,11 @@ class GithubApp:
             headers={"Authorization": auth_header, "User-Agent": user_agent},
         ).json()
 
+    @deprecated.deprecated(reason="Use .installation_token_supplier() instead.", version="0.8.0")
     def get_installation_token_supplier(self, installation_id: int) -> InstallationTokenSupplier:
+        return self.installation_token_supplier(installation_id)
+
+    def installation_token_supplier(self, installation_id: int) -> InstallationTokenSupplier:
         """
         Create an #InstallationTokenSupplier for your GitHub application to act within the scope of the given
         *installation_id*.
