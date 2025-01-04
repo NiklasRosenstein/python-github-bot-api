@@ -45,6 +45,9 @@ markdown_extensions:
 
 nav:
   - index.md
-  - examples.md
   - api.md
   - changelog.md
+  - Examples:
+    - examples/app.md
+    - examples/webhook.md
+    - examples/app-and-webhook.md
