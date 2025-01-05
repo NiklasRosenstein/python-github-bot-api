@@ -51,3 +51,4 @@ nav:
     - examples/app.md
     - examples/webhook.md
     - examples/app-and-webhook.md
+    - examples/oauth2.md

@@ -37,7 +37,7 @@ Documentation = "https://niklasrosenstein.github.io/python-github-bot-api/"
 Repository = "https://github.com/NiklasRosenstein/python-github-bot-api"
 
 [tool.mypy]
-python_version = "3.8"
+python_version = "3.9"
 explicit_package_bases = true
 mypy_path = ["src"]
 namespace_packages = true

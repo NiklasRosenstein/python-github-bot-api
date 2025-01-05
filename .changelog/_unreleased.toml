@@ -9,3 +9,9 @@ id = "1e882ab7-ae70-44ac-a58f-de8e7829f696"
 type = "fix"
 description = "Hide `GithubApp.private_key` from `repr()`"
 author = "@NiklasRosenstein"
+
+[[entries]]
+id = "dd92343b-4e35-4d03-9990-82189fba8aad"
+type = "feature"
+description = "Add API for initiating OAuth2 Web application and Device flows"
+author = "@NiklasRosenstein"
