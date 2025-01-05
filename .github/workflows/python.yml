@@ -23,7 +23,7 @@ jobs:
       with:
         python-version: "${{ matrix.python-version }}"
     - run: uv sync --all-extras --dev
-    - run: uvx --from slap-cli slap test
+    - run: uvx --python-preference=only-managed --from slap-cli slap test
 
   documentation:
     runs-on: ubuntu-latest
