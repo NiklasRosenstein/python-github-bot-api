@@ -3,3 +3,9 @@ id = "afe1b9c3-a4d9-4f33-9587-ae430f672646"
 type = "deprecation"
 description = "Rename `GithubApp.get_installation_token_supplier()` to `.installation_token_supplier()` for consistency"
 author = "@NiklasRosenstein"
+
+[[entries]]
+id = "1e882ab7-ae70-44ac-a58f-de8e7829f696"
+type = "fix"
+description = "Hide `GithubApp.private_key` from `repr()`"
+author = "@NiklasRosenstein"

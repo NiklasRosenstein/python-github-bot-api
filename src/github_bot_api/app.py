@@ -76,7 +76,7 @@ class GithubApp:
     app_id: int
     """GitHub Application ID."""
 
-    private_key: str
+    private_key: str = dataclasses.field(repr=False)
     """RSA private key to sign the JWT with."""
 
     v3_api_url: str = PUBLIC_GITHUB_V3_API_URL
