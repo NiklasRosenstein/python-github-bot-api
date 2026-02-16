@@ -15,3 +15,10 @@ id = "dd92343b-4e35-4d03-9990-82189fba8aad"
 type = "feature"
 description = "Add API for initiating OAuth2 Web application and Device flows"
 author = "@NiklasRosenstein"
+
+[[entries]]
+id = "d62bf2e4-15e4-4989-933f-f8ac4bb68eed"
+type = "fix"
+description = "Ensure `iss` claim is a string"
+author = "@tun0"
+pr = "https://github.com/NiklasRosenstein/python-github-bot-api/issues/26"
