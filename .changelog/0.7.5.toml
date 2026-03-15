@@ -1,0 +1,7 @@
+release-date = "2026-03-15"
+
+[[entries]]
+id = "f040de4d-62ee-4bb3-9363-cc7fac6fcebc"
+type = "chore"
+description = "chore(deps): update dependency black to v26 [security] (#29)"
+author = "@renovate[bot]"
