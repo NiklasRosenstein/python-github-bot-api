@@ -1,0 +1,137 @@
+name: Auto Release
+
+# Trigger after the Python CI workflow completes successfully on develop.
+# This ensures we never tag a release from a broken commit.
+on:
+  workflow_run:
+    workflows: ["Python"]
+    types:
+      - completed
+    branches:
+      - develop
+
+jobs:
+  auto-release:
+    name: Bump version and tag release
+    runs-on: ubuntu-latest
+    # Only proceed when CI passed
+    if: github.event.workflow_run.conclusion == 'success'
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          # Use a PAT so the tag push can trigger release.yml
+          # (pushes with GITHUB_TOKEN do not trigger further workflows)
+          token: ${{ secrets.RELEASE_TOKEN || secrets.GITHUB_TOKEN }}
+
+      - name: Read current version
+        id: ver
+        run: |
+          VERSION=$(grep '^version = ' pyproject.toml | cut -d'"' -f2)
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "Current version: $VERSION"
+
+      - name: Check whether version is already tagged
+        id: tag_check
+        run: |
+          if git tag --list | grep -qx "${{ steps.ver.outputs.version }}"; then
+            echo "tagged=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "tagged=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      # ── Path A: version already tagged → check for unreleased commits ──────
+
+      - name: Count commits since last tag
+        id: commits
+        if: steps.tag_check.outputs.tagged == 'true'
+        run: |
+          LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
+          if [ -z "$LATEST_TAG" ]; then
+            echo "count=0" >> "$GITHUB_OUTPUT"
+          else
+            COUNT=$(git log "$LATEST_TAG..HEAD" --oneline | wc -l)
+            echo "count=$COUNT" >> "$GITHUB_OUTPUT"
+            echo "Commits since $LATEST_TAG: $COUNT"
+          fi
+
+      - name: Bump patch version
+        id: bump
+        if: steps.tag_check.outputs.tagged == 'true' && steps.commits.outputs.count > 0
+        run: |
+          CUR="${{ steps.ver.outputs.version }}"
+          MAJOR=$(echo "$CUR" | cut -d. -f1)
+          MINOR=$(echo "$CUR" | cut -d. -f2)
+          PATCH=$(echo "$CUR" | cut -d. -f3)
+          NEW="$MAJOR.$MINOR.$((PATCH + 1))"
+          echo "new_version=$NEW" >> "$GITHUB_OUTPUT"
+          echo "Bumping $CUR → $NEW"
+          sed -i "s/^version = \"$CUR\"/version = \"$NEW\"/" pyproject.toml
+          sed -i "s/^__version__ = \"$CUR\"/__version__ = \"$NEW\"/" src/github_bot_api/__init__.py
+
+      - name: Create changelog entry
+        if: steps.tag_check.outputs.tagged == 'true' && steps.commits.outputs.count > 0
+        run: |
+          NEW="${{ steps.bump.outputs.new_version }}"
+          LATEST_TAG=$(git describe --tags --abbrev=0)
+          TODAY=$(date +%Y-%m-%d)
+          UUID=$(python3 -c "import uuid; print(uuid.uuid4())")
+          # Collect PR/commit subjects for the description
+          DESCRIPTION=$(git log "$LATEST_TAG..HEAD" --pretty=format:"%s" \
+            | grep -v '^\[auto-release\]' | head -10 \
+            | python3 -c "
+          import sys, json
+          lines = [l.strip() for l in sys.stdin if l.strip()]
+          print('; '.join(lines) if lines else 'Automated dependency updates')
+          ")
+          cat > ".changelog/$NEW.toml" << EOF
+          release-date = "$TODAY"
+
+          [[entries]]
+          id = "$UUID"
+          type = "chore"
+          description = "$DESCRIPTION"
+          author = "@renovate[bot]"
+          EOF
+          echo "Created .changelog/$NEW.toml"
+
+      - name: Commit version bump and tag
+        if: steps.tag_check.outputs.tagged == 'true' && steps.commits.outputs.count > 0
+        run: |
+          NEW="${{ steps.bump.outputs.new_version }}"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add pyproject.toml src/github_bot_api/__init__.py ".changelog/$NEW.toml"
+          git commit -m "chore: bump version to $NEW [auto-release]"
+          git push origin develop
+          git tag "$NEW" -m "Release $NEW"
+          git push origin "$NEW"
+          echo "Pushed tag $NEW — release.yml will publish to PyPI"
+
+      # ── Path B: version bumped manually in a PR, not yet tagged ────────────
+
+      - name: Verify changelog exists for manual version bump
+        if: steps.tag_check.outputs.tagged == 'false'
+        id: changelog_check
+        run: |
+          VERSION="${{ steps.ver.outputs.version }}"
+          if [ -f ".changelog/$VERSION.toml" ]; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+            echo "Changelog entry found for $VERSION"
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+            echo "No changelog entry at .changelog/$VERSION.toml — skipping release"
+          fi
+
+      - name: Tag manually-bumped version
+        if: steps.tag_check.outputs.tagged == 'false' && steps.changelog_check.outputs.exists == 'true'
+        run: |
+          VERSION="${{ steps.ver.outputs.version }}"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git tag "$VERSION" -m "Release $VERSION"
+          git push origin "$VERSION"
+          echo "Pushed tag $VERSION — release.yml will publish to PyPI"
