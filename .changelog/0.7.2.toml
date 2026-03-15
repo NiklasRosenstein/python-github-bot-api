@@ -1,0 +1,7 @@
+release-date = "2026-03-15"
+
+[[entries]]
+id = "a2dac636-647f-464d-9ff6-b0130a1a3c1a"
+type = "chore"
+description = "chore: automate security updates and releases (#28)"
+author = "@renovate[bot]"
