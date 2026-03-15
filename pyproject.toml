@@ -16,7 +16,7 @@ dependencies = [
     "urllib3>=2.6.3",
 ]
 name = "github-bot-api"
-version = "0.7.3"
+version = "0.7.4"
 description = "API for creating GitHub bots and webhooks in Python."
 readme = "README.md"
 classifiers = [
