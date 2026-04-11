@@ -1,0 +1,7 @@
+release-date = "2026-04-11"
+
+[[entries]]
+id = "c2465817-8366-4606-8893-f12596b74c75"
+type = "chore"
+description = "Fix tag filter pattern in release.yml: glob syntax, not regex (#31)"
+author = "@renovate[bot]"
