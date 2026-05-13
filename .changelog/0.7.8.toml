@@ -1,0 +1,7 @@
+release-date = "2026-05-13"
+
+[[entries]]
+id = "fb95643d-ce72-4bed-b0e0-a48105d2b832"
+type = "chore"
+description = "chore(deps): update dependency urllib3 to v2.7.0 [security] (#33)"
+author = "@renovate[bot]"
