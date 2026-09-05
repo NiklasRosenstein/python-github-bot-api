@@ -1,0 +1,7 @@
+release-date = "2026-09-05"
+
+[[entries]]
+id = "31becb14-4542-4a16-8704-4b6240db8823"
+type = "chore"
+description = "chore(deps): update dependency mkdocs-material to v9.7.7 [security] (#36)"
+author = "@renovate[bot]"
