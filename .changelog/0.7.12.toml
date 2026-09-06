@@ -1,0 +1,7 @@
+release-date = "2026-09-06"
+
+[[entries]]
+id = "4237dcf6-aaaf-45b0-ae29-bf50ff7cacd2"
+type = "chore"
+description = "chore(deps): update dependency pymdown-extensions to v11 [security] (#37)"
+author = "@renovate[bot]"
