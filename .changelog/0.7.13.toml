@@ -1,0 +1,7 @@
+release-date = "2026-10-03"
+
+[[entries]]
+id = "7ea3ecd7-15ea-401a-9363-0f2894f65c5f"
+type = "chore"
+description = "chore(deps): update dependency pyjwt to v2.15.0 [security] (#38)"
+author = "@renovate[bot]"
